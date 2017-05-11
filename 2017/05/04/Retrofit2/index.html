@@ -1,0 +1,1331 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一、Retrofit2入门1.1、创建Retrofit实例`Retrofit retrofit = new Retrofit.Builder()     .baseUrl(&amp;quot;http://localhost:4567/&amp;quot;)     .build();`">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retrofit2完全教程（一）">
+<meta property="og:url" content="http://yoursite.com/2017/05/04/Retrofit2/index.html">
+<meta property="og:site_name" content="Android进阶之路--左文站">
+<meta property="og:description" content="一、Retrofit2入门1.1、创建Retrofit实例`Retrofit retrofit = new Retrofit.Builder()     .baseUrl(&amp;quot;http://localhost:4567/&amp;quot;)     .build();`">
+<meta property="og:image" content="http://yoursite.com/img/6.jpg">
+<meta property="og:updated_time" content="2017-05-10T05:40:41.333Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retrofit2完全教程（一）">
+<meta name="twitter:description" content="一、Retrofit2入门1.1、创建Retrofit实例`Retrofit retrofit = new Retrofit.Builder()     .baseUrl(&amp;quot;http://localhost:4567/&amp;quot;)     .build();`">
+<meta name="twitter:image" content="http://yoursite.com/img/6.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/04/Retrofit2/"/>
+
+
+
+
+
+  <title>Retrofit2完全教程（一） | Android进阶之路--左文站</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Android进阶之路--左文站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            GitHub集锦
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            作者简介
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/Retrofit2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左文站">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Android进阶之路--左文站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Retrofit2完全教程（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-04T15:10:43+08:00">
+                2017-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/05/04/Retrofit2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/05/04/Retrofit2/" class="leancloud_visitors" data-flag-title="Retrofit2完全教程（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/img/6.jpg" alt="开心一刻"></p>
+<h2 id="一、Retrofit2入门"><a href="#一、Retrofit2入门" class="headerlink" title="一、Retrofit2入门"></a>一、Retrofit2入门</h2><h4 id="1-1、创建Retrofit实例"><a href="#1-1、创建Retrofit实例" class="headerlink" title="1.1、创建Retrofit实例"></a>1.1、创建Retrofit实例</h4><pre><code>`Retrofit retrofit = new Retrofit.Builder()
+    .baseUrl(&quot;http://localhost:4567/&quot;)
+    .build();`
+</code></pre><a id="more"></a>
+<p>创建Retrofit实例时需要通过Retrofit.Builder,并调用baseUrl方法设置URL。<br>注： Retrofit2 的baseUlr 必须以 /（斜线） 结束，不然会抛出一个IllegalArgumentException,所以如果你看到别的教程没有以 / 结束，那么多半是直接从Retrofit 1.X 照搬过来的。</p>
+<h4 id="1-2、接口定义"><a href="#1-2、接口定义" class="headerlink" title="1.2、接口定义"></a>1.2、接口定义</h4><p>以获取指定id的Blog为例</p>
+<pre><code> public interface BlogService {`
+
+@GET(&quot;blog/{id}&quot;)
+
+Call&lt;ResponseBody&gt; getBlog(@Path(&quot;id&quot;) int id);
+
+}`
+</code></pre><p>注意，这里是interface不是class，所以我们是无法直接调用该方法，我们需要用Retrofit创建一个BlogService的代理对象。</p>
+<pre><code>BlogService service = retrofit.create(BlogService.class);
+</code></pre><p>拿到代理对象之后，就可以调用该方法啦。</p>
+<h4 id="1-3、接口调用"><a href="#1-3、接口调用" class="headerlink" title="1.3、接口调用"></a>1.3、接口调用</h4><pre><code>Call&lt;ResponseBody&gt; call = service.getBlog(2);
+</code></pre><p>// 用法和OkHttp的call如出一辙,<br>// 不同的是如果是Android系统回调方法执行在主线程</p>
+<pre><code>  call.enqueue(new Callback&lt;ResponseBody&gt;() {
+  @Override
+  void onResponse(Call&lt;ResponseBody&gt; call, Response&lt;ResponseBody&gt; response) {
+    try {
+        System.out.println(response.body().string());
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+@Override
+public void onFailure(Call&lt;ResponseBody&gt; call, Throwable t) {
+    t.printStackTrace();
+} 
+});`
+</code></pre><h4 id="01代码"><a href="#01代码" class="headerlink" title="01代码:"></a>01代码:</h4><pre><code>  public interface BlogService {
+    @GET(&quot;blog/{id}&quot;) //这里的{id} 表示是一个变量
+    Call&lt;ResponseBody&gt; getBlog(/** 这里的id表示的是上面的{id} */@Path(&quot;id&quot;) int id);
+}
+
+public static void main(String[] args) throws IOException {
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(&quot;http://localhost:4567/&quot;)
+            .build();
+
+    BlogService service = retrofit.create(BlogService.class);
+    Call&lt;ResponseBody&gt; call = service.getBlog(2);
+    // 用法和OkHttp的call如出一辙
+    // 不同的是如果是Android系统回调方法执行在主线程
+    call.enqueue(new Callback&lt;ResponseBody&gt;() {
+        @Override
+        public void onResponse(
+                Call&lt;ResponseBody&gt; call, Response&lt;ResponseBody&gt; response) {
+            try {
+                System.out.println(response.body().string());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onFailure(Call&lt;ResponseBody&gt; call, Throwable t) {
+            t.printStackTrace();
+        }
+    });
+}
+</code></pre><h3 id="2-Gson与Converter"><a href="#2-Gson与Converter" class="headerlink" title="2.Gson与Converter"></a>2.Gson与Converter</h3><p>在默认情况下Retrofit只支持将HTTP的响应体转换换为ResponseBody,<br>这也是什么我在前面的例子接口的返回值都是 Call<responsebody>，<br>但如果响应体只是支持转换为ResponseBody的话何必要引用泛型呢，<br>返回值直接用一个Call就行了嘛，既然支持泛型，那说明泛型参数可以是其它类型的，<br>而Converter就是Retrofit为我们提供用于将ResponseBody转换为我们想要的类型，<br>有了Converter之后我们就可以写把我们的第一个例子的接口写成这个样子了：</responsebody></p>
+<pre><code>public interface BlogService {
+
+  @GET(&quot;blog/{id}&quot;)
+
+  Call&lt;Result&lt;Blog&gt;&gt; getBlog(@Path(&quot;id&quot;) int id);
+
+}
+</code></pre><p>当然只改变泛型的类型是不行的，我们在创建Retrofit时需要明确告知用于将ResponseBody转换我们泛型中的类型时需要使用的Converter</p>
+<p>引入Gson支持:</p>
+<pre><code>compile &apos;com.squareup.retrofit2:converter-gson:2.0.2&apos;
+</code></pre><p>通过GsonConverterFactory为Retrofit添加Gson支持：</p>
+<pre><code>Gson gson = new GsonBuilder()
+  //配置你的Gson
+  .setDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;)
+  .create();
+
+Retrofit retrofit = new Retrofit.Builder()
+  .baseUrl(&quot;http://localhost:4567/&quot;)
+  //可以接收自定义的Gson，当然也可以不传
+  .addConverterFactory(GsonConverterFactory.create(gson))
+  .build();
+</code></pre><p>这样Retrofit就会使用Gson将ResponseBody转换我们想要的类型。</p>
+<p>这是时候我们终于可以演示如使创建一个Blog了！</p>
+<pre><code>`@POST(&quot;blog&quot;)
+Call&lt;Result&lt;Blog&gt;&gt; createBlog(@Body Blog blog);`
+</code></pre><p>被@Body注解的的Blog将会被Gson转换成RequestBody发送到服务器。</p>
+<pre><code>BlogService service = retrofit.create(BlogService.class);  
+Blog blog = new Blog();
+blog.content = &quot;新建的Blog&quot;;
+blog.title = &quot;测试&quot;;
+blog.author = &quot;怪盗kidou&quot;;
+Call&lt;Result&lt;Blog&gt;&gt; call = service.createBlog(blog);`
+</code></pre><h4 id="代码02："><a href="#代码02：" class="headerlink" title="代码02："></a>代码02：</h4><pre><code>  public interface BlogService {
+    @GET(&quot;blog/{id}&quot;)
+    Call&lt;Result&lt;Blog&gt;&gt; getBlog(@Path(&quot;id&quot;) int id);
+}
+
+public static void main(String[] args) {
+    Gson gson = new GsonBuilder()
+            //配置你的Gson
+            .setDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;)
+            .create();
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(&quot;http://localhost:4567/&quot;)
+            //可以接收自定义的Gson，当然也可以不传
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build();
+
+
+    BlogService service = retrofit.create(BlogService.class);
+    Call&lt;Result&lt;Blog&gt;&gt; call = service.getBlog(2);
+    call.enqueue(new Callback&lt;Result&lt;Blog&gt;&gt;() {
+        @Override
+        public void onResponse(Call&lt;Result&lt;Blog&gt;&gt; call, Response&lt;Result&lt;Blog&gt;&gt; response) {
+            // 已经转换为想要的类型了
+            Result&lt;Blog&gt; result = response.body();
+            System.out.println(result);
+        }
+
+        @Override
+        public void onFailure(Call&lt;Result&lt;Blog&gt;&gt; call, Throwable t) {
+            t.printStackTrace();
+        }
+    });
+}
+</code></pre><h3 id="3-RxJava与CallAdapter"><a href="#3-RxJava与CallAdapter" class="headerlink" title="3.RxJava与CallAdapter"></a>3.RxJava与CallAdapter</h3><p>上节介绍的Converter是对于Call<t>中T的转换，而CallAdapter则可以对Call转换，这样的话Call<t>中的Call也是可以被替换的，而返回值的类型就决定你后续的处理程序逻辑，同样Retrofit提供了多个CallAdapter，这里以RxJava的为例，用Observable代替Call：</t></t></p>
+<p>引入RxJava支持:</p>
+<pre><code>compile &apos;com.squareup.retrofit2:adapter-rxjava:2.0.2&apos;
+</code></pre><p>通过RxJavaCallAdapterFactory为Retrofit添加RxJava支持：</p>
+<pre><code>Retrofit retrofit = new Retrofit.Builder()
+  .baseUrl(&quot;http://localhost:4567/&quot;)
+  .addConverterFactory(GsonConverterFactory.create())
+  .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+  .build();
+</code></pre><p>接口设计：</p>
+<pre><code>public interface BlogService {
+  @POST(&quot;/blog&quot;)
+  Observable&lt;Result&lt;List&lt;Blog&gt;&gt;&gt; getBlogs();
+}
+</code></pre><p>使用：</p>
+<pre><code>BlogService service = retrofit.create(BlogService.class);
+service.getBlogs(1)
+  .subscribeOn(Schedulers.io())
+  .subscribe(new Subscriber&lt;Result&lt;List&lt;Blog&gt;&gt;&gt;() {
+  @Override
+  public void onCompleted() {
+    System.out.println(&quot;onCompleted&quot;);
+  }
+
+  @Override
+  public void onError(Throwable e) {
+    System.err.println(&quot;onError&quot;);
+  }
+
+  @Override
+  public void onNext(Result&lt;List&lt;Blog&gt;&gt; blogsResult) {
+    System.out.println(blogsResult);
+  }
+  });
+</code></pre><h4 id="代码03："><a href="#代码03：" class="headerlink" title="代码03："></a>代码03：</h4><pre><code>  public interface BlogService {
+    @GET(&quot;/blog&quot;)
+    Observable&lt;Result&lt;List&lt;Blog&gt;&gt;&gt; getBlogs(@Query(&quot;page&quot;) int page);
+    /*
+      「20160608补充」如果需要Header的值，可以把返回值替换为
+        Observable&lt;Response&lt;Result&lt;List&lt;Blog&gt;&gt;&gt;&gt;
+        Observable&lt;retrofit2.adapter.rxjava.Result&lt;Result&lt;List&lt;Blog&gt;&gt;&gt;&gt; //都叫Result，真是失策
+     */
+
+}
+
+public static void main(String[] args) {
+    Gson gson = new GsonBuilder()
+            .setDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;)
+            .create();
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(&quot;http://localhost:4567/&quot;)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+            .build();
+
+    BlogService service = retrofit.create(BlogService.class);
+    service.getBlogs(1)
+            .observeOn(Schedulers.io())
+            .subscribe(new Subscriber&lt;Result&lt;List&lt;Blog&gt;&gt;&gt;() {
+                @Override
+                public void onCompleted() {
+                    System.out.println(&quot;onCompleted&quot;);
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    System.err.println(&quot;onError&quot;);
+                }
+
+                @Override
+                public void onNext(Result&lt;List&lt;Blog&gt;&gt; blogsResult) {
+                    System.out.println(blogsResult);
+                }
+            });
+}
+</code></pre><h4 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h4><p>像上面的这种情况最后我们无法获取到返回的Header和响应码的，如果我们需要这两者，提供两种方案：</p>
+<p>1、用Observable<response<t>&gt;``Observable<t> ,这里的Response指retrofit2.Response</t></response<t></p>
+<p>2、用Observable<result<t>&gt; 代替Observable<t>，这里的Result是指retrofit2.adapter.rxjava.Result,这个Result中包含了Response的实例</t></result<t></p>
+<h3 id="4-自定义Converter"><a href="#4-自定义Converter" class="headerlink" title="4.自定义Converter"></a>4.自定义Converter</h3><p>本节的内容是教大家实现在一简易的Converter，这里以返回格式为Call<string>为例。</string></p>
+<p>在此之前先了解一下Converter接口及其作用：</p>
+<pre><code>public interface Converter&lt;F, T&gt; {
+  // 实现从 F(rom) 到 T(o)的转换
+  T convert(F value) throws IOException;
+
+  // 用于向Retrofit提供相应Converter的工厂
+  abstract class Factory {
+// 这里创建从ResponseBody其它类型的Converter，如果不能处理返回null
+// 主要用于对响应体的处理
+public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations,
+Retrofit retrofit) {
+  return null;
+}
+
+// 在这里创建 从自定类型到ResponseBody 的Converter,不能处理就返回null，
+// 主要用于对Part、PartMap、Body注解的处理
+public Converter&lt;?, RequestBody&gt; requestBodyConverter(Type type,
+Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
+  return null;
+}
+
+// 这里用于对Field、FieldMap、Header、Path、Query、QueryMap注解的处理
+// Retrfofit对于上面的几个注解默认使用的是调用toString方法
+public Converter&lt;?, String&gt; stringConverter(Type type, Annotation[] annotations,
+Retrofit retrofit) {
+  return null;
+}
+
+  }
+}
+</code></pre><p>我们要想从Call<responsebody> 转换为 Call<string> 那么对应的F和T则分别对应ResponseBody和String，我们定义一个StringConverter并实现Converter接口。</string></responsebody></p>
+<pre><code>public static class StringConverter implements Converter&lt;ResponseBody, String&gt; {
+
+  public static final StringConverter INSTANCE = new StringConverter();
+
+  @Override
+  public String convert(ResponseBody value) throws IOException {
+return value.string();
+  }
+}
+</code></pre><p>我们需要一个Fractory来向Retrofit注册StringConverter</p>
+<pre><code>public static class StringConverterFactory extends Converter.Factory {
+
+  public static final StringConverterFactory INSTANCE = new StringConverterFactory();
+
+  public static StringConverterFactory create() {
+return INSTANCE;
+  }
+
+  // 我们只关实现从ResponseBody 到 String 的转换，所以其它方法可不覆盖
+  @Override
+  public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
+if (type == String.class) {
+  return StringConverter.INSTANCE;
+}
+//其它类型我们不处理，返回null就行
+return null;
+  }
+}
+</code></pre><p>使用Retrofit.Builder.addConverterFactory向Retrofit注册我们StringConverterFactory：</p>
+<pre><code>Retrofit retrofit = new Retrofit.Builder()
+  .baseUrl(&quot;http://localhost:4567/&quot;)
+  // 如是有Gson这类的Converter 一定要放在其它前面
+  .addConverterFactory(StringConverterFactory.create())
+  .addConverterFactory(GsonConverterFactory.create())
+  .build();
+</code></pre><p>注：addConverterFactory是有先后顺序的，如果有多个ConverterFactory都支持同一种类型，那么就是只有第一个才会被使用，而GsonConverterFactory是不判断是否支持的，所以这里交换了顺序还会有一个异常抛出，原因是类型不匹配。</p>
+<p>只要返回值类型的泛型参数就会由我们的StringConverter处理,不管是Call<string>还是Observable<string></string></string></p>
+<h4 id="代码04："><a href="#代码04：" class="headerlink" title="代码04："></a>代码04：</h4><pre><code> ` public interface BlogService {`
+    @GET(&quot;blog/{id}&quot;)
+    Call&lt;String&gt; getBlog(@Path(&quot;id&quot;) int id);
+}
+
+
+/**
+ * 自定义Converter实现RequestBody到String的转换
+ */
+public static class StringConverter implements Converter&lt;ResponseBody, String&gt; {
+
+    public static final StringConverter INSTANCE = new StringConverter();
+
+    @Override
+    public String convert(ResponseBody value) throws IOException {
+        return value.string();
+    }
+}
+
+/**
+ * 用于向Retrofit提供StringConverter
+ */
+public static class StringConverterFactory extends Converter.Factory {
+
+    public static final StringConverterFactory INSTANCE = new StringConverterFactory();
+
+    public static StringConverterFactory create() {
+        return INSTANCE;
+    }
+
+    // 我们只关实现从ResponseBody 到 String 的转换，所以其它方法可不覆盖
+    @Override
+    public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
+        if (type == String.class) {
+            return StringConverter.INSTANCE;
+        }
+        //其它类型我们不处理，返回null就行
+        return null;
+    }
+}
+
+public static void main(String[] args) {
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(&quot;http://localhost:4567/&quot;)
+            // 如是有Gson这类的Converter 一定要放在其它前面
+            .addConverterFactory(StringConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+    BlogService service = retrofit.create(BlogService.class);
+    Call&lt;String&gt; call = service.getBlog(2);
+    call.enqueue(new Callback&lt;String&gt;() {
+        @Override
+        public void onResponse(Call&lt;String&gt; call, Response&lt;String&gt; response) {
+            System.out.println(response.body());
+        }
+
+        @Override
+        public void onFailure(Call&lt;String&gt; call, Throwable t) {
+            t.printStackTrace();
+        }
+    });
+</code></pre><h3 id="5-自定义CallAdapter"><a href="#5-自定义CallAdapter" class="headerlink" title="5.自定义CallAdapter"></a>5.自定义CallAdapter</h3><p>本节将介绍如何自定一个CallAdapter，并验证是否所有的String都会使用我们上节中自定义的Converter。</p>
+<p>先看一下CallAdapter接口定义及各方法的作用：</p>
+<pre><code>public interface CallAdapter&lt;T&gt; {
+
+  // 直正数据的类型 如Call&lt;T&gt; 中的 T
+  // 这个 T 会作为Converter.Factory.responseBodyConverter 的第一个参数
+  // 可以参照上面的自定义Converter
+  Type responseType();
+
+  &lt;R&gt; T adapt(Call&lt;R&gt; call);
+
+  // 用于向Retrofit提供CallAdapter的工厂类
+  abstract class Factory {
+// 在这个方法中判断是否是我们支持的类型，returnType 即Call&lt;Requestbody&gt;和`Observable&lt;Requestbody&gt;`
+// RxJavaCallAdapterFactory 就是判断returnType是不是Observable&lt;?&gt; 类型
+// 不支持时返回null
+public abstract CallAdapter&lt;?&gt; get(Type returnType, Annotation[] annotations,
+Retrofit retrofit);
+
+// 用于获取泛型的参数 如 Call&lt;Requestbody&gt; 中 Requestbody
+protected static Type getParameterUpperBound(int index, ParameterizedType type) {
+  return Utils.getParameterUpperBound(index, type);
+}
+
+// 用于获取泛型的原始类型 如 Call&lt;Requestbody&gt; 中的 Call
+// 上面的get方法需要使用该方法。
+protected static Class&lt;?&gt; getRawType(Type type) {
+  return Utils.getRawType(type);
+}
+  }
+}
+</code></pre><p>了解了CallAdapter的结构和其作用之后，我们就可以开始自定义我们的CallAdapter了，本节以CustomCall<string>为例。</string></p>
+<p>在此我们需要定义一个CustomCall，不过这里的CustomCall作为演示只是对Call的一个包装，并没有实际的用途。</p>
+<pre><code>public static class CustomCall&lt;R&gt; {
+
+  public final Call&lt;R&gt; call;
+
+  public CustomCall(Call&lt;R&gt; call) {
+this.call = call;
+  }
+
+  public R get() throws IOException {
+return call.execute().body();
+  }
+}
+</code></pre><p>有了CustomCall，我们还需要一个CustomCallAdapter来实现 Call<t> 到 CustomCall<t>的转换，这里需要注意的是最后的泛型，是我们要返回的类型。</t></t></p>
+<pre><code>public static class CustomCallAdapter implements CallAdapter&lt;CustomCall&lt;?&gt;&gt; {
+
+private final Type responseType;
+
+// 下面的 responseType 方法需要数据的类型
+CustomCallAdapter(Type responseType) {
+this.responseType = responseType;
+ }
+
+@Override
+public Type responseType() {
+return responseType;
+}
+
+@Override
+public &lt;R&gt; CustomCall&lt;R&gt; adapt(Call&lt;R&gt; call) {
+// 由 CustomCall 决定如何使用
+return new CustomCall&lt;&gt;(call);
+  }
+}
+</code></pre><p>提供一个CustomCallAdapterFactory用于向Retrofit提供CustomCallAdapter：</p>
+<pre><code>public static class CustomCallAdapterFactory extends CallAdapter.Factory {
+public static final CustomCallAdapterFactory INSTANCE = new CustomCallAdapterFactory();
+
+@Override
+public CallAdapter&lt;?&gt; get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
+// 获取原始类型
+Class&lt;?&gt; rawType = getRawType(returnType);
+// 返回值必须是CustomCall并且带有泛型
+if (rawType == CustomCall.class &amp;&amp; returnType instanceof ParameterizedType) {
+  Type callReturnType = getParameterUpperBound(0, (ParameterizedType) returnType);
+  return new CustomCallAdapter(callReturnType);
+}
+return null;
+}
+}
+</code></pre><p>使用addCallAdapterFactory向Retrofit注册CustomCallAdapterFactory</p>
+<pre><code>Retrofit retrofit = new Retrofit.Builder()
+  .baseUrl(&quot;http://localhost:4567/&quot;)
+  .addConverterFactory(Example09.StringConverterFactory.create())
+  .addConverterFactory(GsonConverterFactory.create())
+  .addCallAdapterFactory(CustomCallAdapterFactory.INSTANCE)
+  .build();
+</code></pre><h5 id="代码05："><a href="#代码05：" class="headerlink" title="代码05："></a>代码05：</h5><pre><code>public interface BlogService {
+    @GET(&quot;blog/{id}&quot;)
+    CustomCall&lt;String&gt; getBlog(@Path(&quot;id&quot;) int id);
+}
+
+public static class CustomCall&lt;R&gt; {
+
+    public final Call&lt;R&gt; call;
+
+    public CustomCall(Call&lt;R&gt; call) {
+        this.call = call;
+    }
+
+    // 提供一个同步获取数据的方法
+    public R get() throws IOException {
+        return call.execute().body();
+    }
+}
+
+public static class CustomCallAdapter implements CallAdapter&lt;CustomCall&lt;?&gt;&gt; {
+
+    private final Type responseType;
+
+    // 下面的 responseType 方法需要数据的类型
+    CustomCallAdapter(Type responseType) {
+        this.responseType = responseType;
+    }
+
+    @Override
+    public Type responseType() {
+        return responseType;
+    }
+
+    @Override
+    public &lt;R&gt; CustomCall&lt;R&gt; adapt(Call&lt;R&gt; call) {
+        // 由 CustomCall 决定如何使用
+        return new CustomCall&lt;&gt;(call);
+    }
+}
+
+public static class CustomCallAdapterFactory extends CallAdapter.Factory {
+    public static final CustomCallAdapterFactory INSTANCE = new CustomCallAdapterFactory();
+
+    @Override
+    public CallAdapter&lt;?&gt; get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
+        // 获取原始类型
+        Class&lt;?&gt; rawType = getRawType(returnType);
+        // 返回值必须是CustomCall并且带有泛型
+        if (rawType == CustomCall.class &amp;&amp; returnType instanceof ParameterizedType) {
+            Type callReturnType = getParameterUpperBound(0, (ParameterizedType) returnType);
+            return new CustomCallAdapter(callReturnType);
+        }
+        return null;
+    }
+}
+
+
+public static void main(String[] args) {
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(&quot;http://localhost:4567/&quot;)
+            .addConverterFactory(Example09.StringConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(CustomCallAdapterFactory.INSTANCE)
+            .build();
+
+    BlogService service = retrofit.create(BlogService.class);
+    CustomCall&lt;String&gt; call = service.getBlog(2);
+    try {
+        String result = call.get();
+        System.out.println(result);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/28/多渠道打包/" rel="next" title="多渠道打包">
+                <i class="fa fa-chevron-left"></i> 多渠道打包
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/04/持久化Cookie/" rel="prev" title="Retrofit+OKHttp 教你怎么持久化管理Cookie">
+                Retrofit+OKHttp 教你怎么持久化管理Cookie <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="左文站" />
+          <p class="site-author-name" itemprop="name">左文站</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Retrofit2入门"><span class="nav-number">1.</span> <span class="nav-text">一、Retrofit2入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1、创建Retrofit实例"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1、创建Retrofit实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2、接口定义"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2、接口定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3、接口调用"><span class="nav-number">1.0.3.</span> <span class="nav-text">1.3、接口调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#01代码"><span class="nav-number">1.0.4.</span> <span class="nav-text">01代码:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Gson与Converter"><span class="nav-number">1.1.</span> <span class="nav-text">2.Gson与Converter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码02："><span class="nav-number">1.1.1.</span> <span class="nav-text">代码02：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-RxJava与CallAdapter"><span class="nav-number">1.2.</span> <span class="nav-text">3.RxJava与CallAdapter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码03："><span class="nav-number">1.2.1.</span> <span class="nav-text">代码03：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注："><span class="nav-number">1.2.2.</span> <span class="nav-text">注：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-自定义Converter"><span class="nav-number">1.3.</span> <span class="nav-text">4.自定义Converter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码04："><span class="nav-number">1.3.1.</span> <span class="nav-text">代码04：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-自定义CallAdapter"><span class="nav-number">1.4.</span> <span class="nav-text">5.自定义CallAdapter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#代码05："><span class="nav-number">1.4.0.1.</span> <span class="nav-text">代码05：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左文站</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "68b7fd0c14974964bb8bc7dbe7a34d69",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("vL8PNDBtyegKd6KMTvEeN7M5-gzGzoHsz", "kxEWPUUrnHF20Kij9gSNh82o");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

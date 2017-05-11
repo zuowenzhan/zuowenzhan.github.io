@@ -1,0 +1,1055 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在之前的项目中使用的小米推送，但用过之后发现，小米推送不稳定，给我们的测试上线带来很多问题，对于测试提的推送时好时坏，可坑苦了我们研发人员。因此，在下个项目中果断放弃小米，进而选择了极光。我们使用的是极光透传和通知，而极光的透传就是自定义消息。下面我们开始">
+<meta property="og:type" content="article">
+<meta property="og:title" content="极光推送快速集成">
+<meta property="og:url" content="http://yoursite.com/2017/04/20/JPush/index.html">
+<meta property="og:site_name" content="Android进阶之路--左文站">
+<meta property="og:description" content="在之前的项目中使用的小米推送，但用过之后发现，小米推送不稳定，给我们的测试上线带来很多问题，对于测试提的推送时好时坏，可坑苦了我们研发人员。因此，在下个项目中果断放弃小米，进而选择了极光。我们使用的是极光透传和通知，而极光的透传就是自定义消息。下面我们开始">
+<meta property="og:updated_time" content="2017-05-10T05:39:50.132Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="极光推送快速集成">
+<meta name="twitter:description" content="在之前的项目中使用的小米推送，但用过之后发现，小米推送不稳定，给我们的测试上线带来很多问题，对于测试提的推送时好时坏，可坑苦了我们研发人员。因此，在下个项目中果断放弃小米，进而选择了极光。我们使用的是极光透传和通知，而极光的透传就是自定义消息。下面我们开始">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/20/JPush/"/>
+
+
+
+
+
+  <title>极光推送快速集成 | Android进阶之路--左文站</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Android进阶之路--左文站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            GitHub集锦
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            作者简介
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/20/JPush/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左文站">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Android进阶之路--左文站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">极光推送快速集成</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T17:15:26+08:00">
+                2017-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/04/20/JPush/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/04/20/JPush/" class="leancloud_visitors" data-flag-title="极光推送快速集成">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p> 在之前的项目中使用的小米推送，但用过之后发现，小米推送不稳定，给我们的测试上线带来很多问题，对于测试提的推送时好时坏，可坑苦了我们研发人员。因此，在下个项目中果断放弃小米，进而选择了极光。我们使用的是极光透传和通知，而极光的透传就是自定义消息。下面我们开始<br> <a id="more"></a><br>前提已经注册,下载demo</p>
+<h2 id="一、配置"><a href="#一、配置" class="headerlink" title="一、配置"></a>一、配置</h2><h3 id="1-项目中的build-gradle中添加"><a href="#1-项目中的build-gradle中添加" class="headerlink" title="1.项目中的build.gradle中添加"></a>1.项目中的build.gradle中添加</h3><pre><code>    defaultConfig {
+
+    applicationId &quot;你的包名&quot;
+    minSdkVersion 15
+    targetSdkVersion 23
+    versionCode 1
+    versionName &quot;1.0&quot;
+
+    ndk {
+        //选择要添加的对应cpu类型的.so库。
+        abiFilters &apos;armeabi&apos;, &apos;armeabi-v7a&apos;, &apos;armeabi-v8a&apos;
+        // 还可以添加 &apos;x86&apos;, &apos;x86_64&apos;, &apos;mips&apos;, &apos;mips64&apos;
+    }
+
+    manifestPlaceholders = [
+            JPUSH_PKGNAME : applicationId,
+            JPUSH_APPKEY : &quot;你注册的appkey&quot;, //JPush上注册的包名对应的appkey.
+            JPUSH_CHANNEL : &quot;developer-default&quot;, //暂时填写默认值即可.
+    ]
+}
+
+dependencies {
+compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])
+testCompile &apos;junit:junit:4.12&apos;
+compile &apos;com.android.support:appcompat-v7:23.0.0&apos;
+
+compile &apos;cn.jiguang.sdk:jpush:3.0.3&apos;  // 此处以JPush 3.0.3 版本为例。
+compile &apos;cn.jiguang.sdk:jcore:1.1.1&apos;  // 此处以JCore 1.1.1 版本为例。}
+</code></pre><h3 id="2-在工程的gradle-properties文件中添加"><a href="#2-在工程的gradle-properties文件中添加" class="headerlink" title="2.在工程的gradle.properties文件中添加"></a>2.在工程的gradle.properties文件中添加</h3><p> <code>android.useDeprecatedNdk=true</code></p>
+<h3 id="3-在MyApplication初始化，在AndroidManifest-xml中添加MyApplication"><a href="#3-在MyApplication初始化，在AndroidManifest-xml中添加MyApplication" class="headerlink" title="3.在MyApplication初始化，在AndroidManifest.xml中添加MyApplication"></a>3.在MyApplication初始化，在AndroidManifest.xml中添加MyApplication</h3><pre><code>JPushInterface.setDebugMode(true);     // 设置开启日志,发布时请关闭日志
+JPushInterface.init(this);             // 初始化 JPush
+</code></pre><h3 id="4-接收推送广播，不写点击默认进入主页面"><a href="#4-接收推送广播，不写点击默认进入主页面" class="headerlink" title="4.接收推送广播，不写点击默认进入主页面"></a>4.接收推送广播，不写点击默认进入主页面</h3><pre><code>public class MyReceiver extends BroadcastReceiver {
+private static final String TAG = &quot;JPush&quot;;
+
+@Override
+public void onReceive(Context context, Intent intent) {
+    Bundle bundle = intent.getExtras();
+    Log.d(TAG, &quot;[MyReceiver] onReceive - &quot; + intent.getAction() + &quot;, extras: &quot; + printBundle(bundle));
+
+    if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
+        String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
+        Log.d(TAG, &quot;[MyReceiver] 接收Registration Id : &quot; + regId);
+        //send the Registration Id to your server...
+
+    } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
+        Log.d(TAG, &quot;[MyReceiver] 接收到推送下来的自定义消息: &quot; + bundle.getString(JPushInterface.EXTRA_MESSAGE));
+
+        //透传
+        processCustomMessage(context, bundle);
+
+    } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
+        Log.d(TAG, &quot;[MyReceiver] 接收到推送下来的通知&quot;);
+        int notifactionId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
+        Log.d(TAG, &quot;[MyReceiver] 接收到推送下来的通知的ID: &quot; + notifactionId);
+
+    } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
+        Log.d(TAG, &quot;[MyReceiver] 用户点击打开了通知&quot;);
+
+        String json = bundle.getString(JPushInterface.EXTRA_EXTRA);
+
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(json);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String url = jsonObject.optString(&quot;url&quot;);
+
+        //打开自定义的Activity
+        Intent i = new Intent(context, WebActivity.class);
+        i.putExtra(&quot;url&quot;,url);
+        //i.putExtras(bundle);
+        //i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
+        context.startActivity(i);
+
+    } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
+        Log.d(TAG, &quot;[MyReceiver] 用户收到到RICH PUSH CALLBACK: &quot; + bundle.getString(JPushInterface.EXTRA_EXTRA));
+        //在这里根据 JPushInterface.EXTRA_EXTRA 的内容处理代码，比如打开新的Activity， 打开一个网页等..
+
+    } else if(JPushInterface.ACTION_CONNECTION_CHANGE.equals(intent.getAction())) {
+        boolean connected = intent.getBooleanExtra(JPushInterface.EXTRA_CONNECTION_CHANGE, false);
+        Log.w(TAG, &quot;[MyReceiver]&quot; + intent.getAction() +&quot; connected state change to &quot;+connected);
+    } else {
+        Log.d(TAG, &quot;[MyReceiver] Unhandled intent - &quot; + intent.getAction());
+    }
+}
+
+// 打印所有的 intent extra 数据
+private static String printBundle(Bundle bundle) {
+    StringBuilder sb = new StringBuilder();
+    for (String key : bundle.keySet()) {
+        if (key.equals(JPushInterface.EXTRA_NOTIFICATION_ID)) {
+            sb.append(&quot;\nkey:&quot; + key + &quot;, value:&quot; + bundle.getInt(key));
+        }else if(key.equals(JPushInterface.EXTRA_CONNECTION_CHANGE)){
+            sb.append(&quot;\nkey:&quot; + key + &quot;, value:&quot; + bundle.getBoolean(key));
+        } else if (key.equals(JPushInterface.EXTRA_EXTRA)) {
+            if (TextUtils.isEmpty(bundle.getString(JPushInterface.EXTRA_EXTRA))) {
+                Log.i(TAG, &quot;This message has no Extra data&quot;);
+                continue;
+            }
+
+            try {
+                JSONObject json = new JSONObject(bundle.getString(JPushInterface.EXTRA_EXTRA));
+                Iterator&lt;String&gt; it =  json.keys();
+
+                while (it.hasNext()) {
+                    String myKey = it.next().toString();
+                    sb.append(&quot;\nkey:&quot; + key + &quot;, value: [&quot; +
+                            myKey + &quot; - &quot; +json.optString(myKey) + &quot;]&quot;);
+                }
+            } catch (JSONException e) {
+                Log.e(TAG, &quot;Get message extra JSON error!&quot;);
+            }
+
+        } else {
+            sb.append(&quot;\nkey:&quot; + key + &quot;, value:&quot; + bundle.getString(key));
+        }
+    }
+    return sb.toString();
+}
+//透传消息
+private void processCustomMessage(Context context, Bundle bundle) {
+
+    if (PayCodeActivity.isForeground) {
+
+        String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
+        String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
+        Intent msgIntent = new Intent(PayCodeActivity.MESSAGE_RECEIVED_ACTION);
+        msgIntent.putExtra(PayCodeActivity.KEY_MESSAGE, message);
+
+        if (!ExampleUtil.isEmpty(extras)) {
+            try {
+                JSONObject extraJson = new JSONObject(extras);
+                if (extraJson.length() &gt; 0) {
+                    msgIntent.putExtra(PayCodeActivity.KEY_EXTRAS, extras);
+                }
+            } catch (JSONException e) {
+
+            }
+
+        }
+        context.sendBroadcast(msgIntent);
+    }
+}
+</code></pre><h3 id="5-注册广播"><a href="#5-注册广播" class="headerlink" title="5.注册广播"></a>5.注册广播</h3><pre><code>&lt;receiver
+    android:name=&quot;全类名&quot;
+    android:enabled=&quot;true&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;cn.jpush.android.intent.REGISTRATION&quot; /&gt;
+        &lt;action android:name=&quot;cn.jpush.android.intent.MESSAGE_RECEIVED&quot; /&gt;
+        &lt;action android:name=&quot;cn.jpush.android.intent.NOTIFICATION_RECEIVED&quot; /&gt;
+        &lt;action android:name=&quot;cn.jpush.android.intent.NOTIFICATION_OPENED&quot; /&gt;
+        &lt;action android:name=&quot;cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION&quot; /&gt;
+        &lt;action android:name=&quot;cn.jpush.android.intent.CONNECTION&quot; /&gt;
+        &lt;!--包名一定要修改--&gt;
+        &lt;category android:name=&quot;包名&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre><h3 id="6-注册别名，按别名推送"><a href="#6-注册别名，按别名推送" class="headerlink" title="6.注册别名，按别名推送"></a>6.注册别名，按别名推送</h3><pre><code>// 调用 JPush 接口来设置别名。
+   JPushInterface.setAliasAndTags(getApplicationContext(),
+           &quot;123456&quot;,
+           null,
+          null);
+</code></pre><h3 id="7-关闭和打开推送"><a href="#7-关闭和打开推送" class="headerlink" title="7.关闭和打开推送"></a>7.关闭和打开推送</h3><pre><code>//关闭推送
+JPushInterface.stopPush(getApplicationContext());
+//打开推送
+JPushInterface.resumePush(getApplicationContext());
+</code></pre><h4 id="8、注AndroidManifest-xml不用添加任何权限"><a href="#8、注AndroidManifest-xml不用添加任何权限" class="headerlink" title="8、注AndroidManifest.xml不用添加任何权限"></a>8、注AndroidManifest.xml不用添加任何权限</h4><h4 id="9-接受透传（自定义消息界面）"><a href="#9-接受透传（自定义消息界面）" class="headerlink" title="9.接受透传（自定义消息界面）"></a>9.接受透传（自定义消息界面）</h4><pre><code>public static boolean isForeground = false;
+
+//for receive customer msg from jpush server
+private MessageReceiver mMessageReceiver;
+public static final String MESSAGE_RECEIVED_ACTION = &quot;com.example.jpushdemo.MESSAGE_RECEIVED_ACTION&quot;;
+public static final String KEY_TITLE = &quot;title&quot;;
+public static final String KEY_MESSAGE = &quot;message&quot;;
+public static final String KEY_EXTRAS = &quot;extras&quot;;
+
+public void registerMessageReceiver() {
+    mMessageReceiver = new MessageReceiver();
+    IntentFilter filter = new IntentFilter();
+    filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+    filter.addAction(MESSAGE_RECEIVED_ACTION);
+    registerReceiver(mMessageReceiver, filter);
+}
+
+public class MessageReceiver extends BroadcastReceiver {
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
+              //透传内容
+            String messge = intent.getStringExtra(KEY_MESSAGE);
+            setCostomMsg(messge);
+        }
+    }
+}
+</code></pre><h4 id="10-遇到的解析问题。后台回传的数据带反斜杠，解析不了，老是奔溃，最终解析数据"><a href="#10-遇到的解析问题。后台回传的数据带反斜杠，解析不了，老是奔溃，最终解析数据" class="headerlink" title="10.遇到的解析问题。后台回传的数据带反斜杠，解析不了，老是奔溃，最终解析数据"></a>10.遇到的解析问题。后台回传的数据带反斜杠，解析不了，老是奔溃，最终解析数据</h4><pre><code>private void setCostomMsg(String msg)  {
+
+    JSONObject myJsonObject = null;
+
+    Log.e(TAG,&quot;推送数据&quot;+msg);
+
+    try {
+
+        //获取data
+        myJsonObject = new JSONObject(msg);
+        String data= myJsonObject.getString(&quot;data&quot;);
+
+        //获取sysno
+        myJsonObject = new JSONObject(data);
+        String sysno=myJsonObject.getString(&quot;sysno&quot;);
+
+        LogUtil.e(TAG,&quot;推送id&quot;+sysno);
+
+        LogUtil.e(TAG,&quot;当前id&quot;+mysysno);
+
+        //判断id是否相等，等服务器调通，将这个方法打开
+        if (!TextUtils.isEmpty(sysno)&amp;&amp;mysysno.equals(sysno)){
+
+            //刷新跳转
+            getData(sysno);
+
+        }
+
+    } catch (JSONException e) {
+
+        e.printStackTrace();
+        LogUtil.e(TAG,e.toString());
+    }
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/19/搭建个人博客/" rel="next" title="教你怎么搭建个人博客">
+                <i class="fa fa-chevron-left"></i> 教你怎么搭建个人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/20/开源项目集锦/" rel="prev" title="Crash信息收集并上传">
+                Crash信息收集并上传 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="左文站" />
+          <p class="site-author-name" itemprop="name">左文站</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、配置"><span class="nav-number">1.</span> <span class="nav-text">一、配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-项目中的build-gradle中添加"><span class="nav-number">1.1.</span> <span class="nav-text">1.项目中的build.gradle中添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-在工程的gradle-properties文件中添加"><span class="nav-number">1.2.</span> <span class="nav-text">2.在工程的gradle.properties文件中添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-在MyApplication初始化，在AndroidManifest-xml中添加MyApplication"><span class="nav-number">1.3.</span> <span class="nav-text">3.在MyApplication初始化，在AndroidManifest.xml中添加MyApplication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-接收推送广播，不写点击默认进入主页面"><span class="nav-number">1.4.</span> <span class="nav-text">4.接收推送广播，不写点击默认进入主页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-注册广播"><span class="nav-number">1.5.</span> <span class="nav-text">5.注册广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-注册别名，按别名推送"><span class="nav-number">1.6.</span> <span class="nav-text">6.注册别名，按别名推送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-关闭和打开推送"><span class="nav-number">1.7.</span> <span class="nav-text">7.关闭和打开推送</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8、注AndroidManifest-xml不用添加任何权限"><span class="nav-number">1.7.1.</span> <span class="nav-text">8、注AndroidManifest.xml不用添加任何权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-接受透传（自定义消息界面）"><span class="nav-number">1.7.2.</span> <span class="nav-text">9.接受透传（自定义消息界面）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-遇到的解析问题。后台回传的数据带反斜杠，解析不了，老是奔溃，最终解析数据"><span class="nav-number">1.7.3.</span> <span class="nav-text">10.遇到的解析问题。后台回传的数据带反斜杠，解析不了，老是奔溃，最终解析数据</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左文站</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "68b7fd0c14974964bb8bc7dbe7a34d69",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("vL8PNDBtyegKd6KMTvEeN7M5-gzGzoHsz", "kxEWPUUrnHF20Kij9gSNh82o");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一、开源项目1.AndroidFire，基于 Material Design + MVP + RxJava + Retrofit + Glide2.仿网易云音乐客户端3.即时通讯：嗨豹4.洛克商城5.仿全民TV6.简阅客户端7.豆芽客户端8.oschina官方客户端9.一个整合了大量主流开源项目的Android Mvp快速搭建框架二、常用控件1.各种简单样式的弹出框：jjdxm_dialogui">
+<meta property="og:type" content="website">
+<meta property="og:title" content="第三方项目集锦">
+<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta property="og:site_name" content="Android进阶之路--左文站">
+<meta property="og:description" content="一、开源项目1.AndroidFire，基于 Material Design + MVP + RxJava + Retrofit + Glide2.仿网易云音乐客户端3.即时通讯：嗨豹4.洛克商城5.仿全民TV6.简阅客户端7.豆芽客户端8.oschina官方客户端9.一个整合了大量主流开源项目的Android Mvp快速搭建框架二、常用控件1.各种简单样式的弹出框：jjdxm_dialogui">
+<meta property="og:image" content="http://yoursite.com/img/1.jpg">
+<meta property="og:updated_time" content="2017-05-08T09:34:17.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第三方项目集锦">
+<meta name="twitter:description" content="一、开源项目1.AndroidFire，基于 Material Design + MVP + RxJava + Retrofit + Glide2.仿网易云音乐客户端3.即时通讯：嗨豹4.洛克商城5.仿全民TV6.简阅客户端7.豆芽客户端8.oschina官方客户端9.一个整合了大量主流开源项目的Android Mvp快速搭建框架二、常用控件1.各种简单样式的弹出框：jjdxm_dialogui">
+<meta name="twitter:image" content="http://yoursite.com/img/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/categories/"/>
+
+
+
+
+
+  <title>第三方项目集锦 | Android进阶之路--左文站</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Android进阶之路--左文站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            GitHub集锦
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            作者简介
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">第三方项目集锦</h1>
+
+
+
+</header>
+
+    
+    
+      <p><img src="/img/1.jpg" alt="开心一刻"></p>
+<h1 id="一、开源项目"><a href="#一、开源项目" class="headerlink" title="一、开源项目"></a>一、开源项目</h1><h3 id="1-AndroidFire，基于-Material-Design-MVP-RxJava-Retrofit-Glide"><a href="#1-AndroidFire，基于-Material-Design-MVP-RxJava-Retrofit-Glide" class="headerlink" title="1.AndroidFire，基于 Material Design + MVP + RxJava + Retrofit + Glide"></a>1.<a href="https://github.com/jaydenxiao2016/AndroidFire" target="_blank" rel="external">AndroidFire，基于 Material Design + MVP + RxJava + Retrofit + Glide</a></h3><h3 id="2-仿网易云音乐客户端"><a href="#2-仿网易云音乐客户端" class="headerlink" title="2.仿网易云音乐客户端"></a>2.<a href="https://github.com/aa112901/remusic" target="_blank" rel="external">仿网易云音乐客户端</a></h3><h3 id="3-即时通讯：嗨豹"><a href="#3-即时通讯：嗨豹" class="headerlink" title="3.即时通讯：嗨豹"></a>3.<a href="https://github.com/sealtalk/sealtalk-android" target="_blank" rel="external">即时通讯：嗨豹</a></h3><h3 id="4-洛克商城"><a href="#4-洛克商城" class="headerlink" title="4.洛克商城"></a>4.<a href="https://github.com/Shuyun123/LKShop" target="_blank" rel="external">洛克商城</a></h3><h3 id="5-仿全民TV"><a href="#5-仿全民TV" class="headerlink" title="5.仿全民TV"></a>5.<a href="https://github.com/MichaelHuyp/Bilibili_Wuxianda" target="_blank" rel="external">仿全民TV</a></h3><h3 id="6-简阅客户端"><a href="#6-简阅客户端" class="headerlink" title="6.简阅客户端"></a>6.<a href="https://github.com/chentao0707/SimplifyReader" target="_blank" rel="external">简阅客户端</a></h3><h3 id="7-豆芽客户端"><a href="#7-豆芽客户端" class="headerlink" title="7.豆芽客户端"></a>7.<a href="https://github.com/DreaminginCodeZH/Douya" target="_blank" rel="external">豆芽客户端</a></h3><h3 id="8-oschina官方客户端"><a href="#8-oschina官方客户端" class="headerlink" title="8.oschina官方客户端"></a>8.<a href="http://git.oschina.net/oschina/android-app" target="_blank" rel="external">oschina官方客户端</a></h3><h3 id="9-一个整合了大量主流开源项目的Android-Mvp快速搭建框架"><a href="#9-一个整合了大量主流开源项目的Android-Mvp快速搭建框架" class="headerlink" title="9.一个整合了大量主流开源项目的Android Mvp快速搭建框架"></a>9.<a href="https://github.com/JessYanCoding/MVPArms" target="_blank" rel="external">一个整合了大量主流开源项目的Android Mvp快速搭建框架</a></h3><h1 id="二、常用控件"><a href="#二、常用控件" class="headerlink" title="二、常用控件"></a>二、常用控件</h1><h3 id="1-各种简单样式的弹出框：jjdxm-dialogui"><a href="#1-各种简单样式的弹出框：jjdxm-dialogui" class="headerlink" title="1.各种简单样式的弹出框：jjdxm_dialogui"></a>1.<a href="https://github.com/jjdxmashl/jjdxm_dialogui" target="_blank" rel="external">各种简单样式的弹出框：jjdxm_dialogui</a></h3><h3 id="2-仿美团选择城市、微信通讯录、饿了么点餐列表的导航悬停分组索引列表：SuspensionIndexBar"><a href="#2-仿美团选择城市、微信通讯录、饿了么点餐列表的导航悬停分组索引列表：SuspensionIndexBar" class="headerlink" title="2.仿美团选择城市、微信通讯录、饿了么点餐列表的导航悬停分组索引列表：SuspensionIndexBar"></a>2.<a href="https://github.com/mcxtzhang/SuspensionIndexBar" target="_blank" rel="external">仿美团选择城市、微信通讯录、饿了么点餐列表的导航悬停分组索引列表：SuspensionIndexBar</a></h3><h3 id="3-二维码扫描和生成"><a href="#3-二维码扫描和生成" class="headerlink" title="3.二维码扫描和生成"></a>3.<a href="https://github.com/yipianfengye/android-zxingLibrary" target="_blank" rel="external">二维码扫描和生成</a></h3><h3 id="4-二维码扫描（三星手机不适配）"><a href="#4-二维码扫描（三星手机不适配）" class="headerlink" title="4.二维码扫描（三星手机不适配）"></a>4.<a href="https://github.com/bingoogolapple/BGAQRCode-Android" target="_blank" rel="external">二维码扫描（三星手机不适配）</a></h3><h3 id="5-时间选择器、省市区三级联动-Android-PickerView"><a href="#5-时间选择器、省市区三级联动-Android-PickerView" class="headerlink" title="5.时间选择器、省市区三级联动:Android-PickerView"></a>5.<a href="https://github.com/Bigkoo/Android-PickerView" target="_blank" rel="external">时间选择器、省市区三级联动:Android-PickerView</a></h3><h3 id="6-提示性UI-Toast"><a href="#6-提示性UI-Toast" class="headerlink" title="6.提示性UI :Toast"></a>6.<a href="https://github.com/hss01248/Toasty" target="_blank" rel="external">提示性UI :Toast</a></h3><h3 id="7-各种dialog：DialogUtil"><a href="#7-各种dialog：DialogUtil" class="headerlink" title="7.各种dialog：DialogUtil"></a>7.<a href="https://github.com/hss01248/DialogUtil" target="_blank" rel="external">各种dialog：DialogUtil</a></h3><h3 id="8-ios风格的dialog-Android-AlertView"><a href="#8-ios风格的dialog-Android-AlertView" class="headerlink" title="8.ios风格的dialog:Android-AlertView"></a>8.<a href="https://github.com/saiwu-bigkoo/Android-AlertView" target="_blank" rel="external">ios风格的dialog:Android-AlertView</a></h3><h3 id="9-通知样式库：NotifyUtil"><a href="#9-通知样式库：NotifyUtil" class="headerlink" title="9.通知样式库：NotifyUtil"></a>9.<a href="https://github.com/hss01248/NotifyUtil" target="_blank" rel="external">通知样式库：NotifyUtil</a></h3><h3 id="10-包括日期选择器、时间选择器、单项选择器、城市地址选择器、车牌号选择器、数字选择器、星座选择器、生肖选择器、颜色选择器、文件选择器、目录选择器等-AndroidPicker"><a href="#10-包括日期选择器、时间选择器、单项选择器、城市地址选择器、车牌号选择器、数字选择器、星座选择器、生肖选择器、颜色选择器、文件选择器、目录选择器等-AndroidPicker" class="headerlink" title="10.包括日期选择器、时间选择器、单项选择器、城市地址选择器、车牌号选择器、数字选择器、星座选择器、生肖选择器、颜色选择器、文件选择器、目录选择器等:AndroidPicker"></a>10.<a href="https://github.com/gzu-liyujiang/AndroidPicker" target="_blank" rel="external">包括日期选择器、时间选择器、单项选择器、城市地址选择器、车牌号选择器、数字选择器、星座选择器、生肖选择器、颜色选择器、文件选择器、目录选择器等:AndroidPicker</a></h3><h3 id="11-仿美团城市选择界面-MeiTuanLocateCity"><a href="#11-仿美团城市选择界面-MeiTuanLocateCity" class="headerlink" title="11.仿美团城市选择界面:MeiTuanLocateCity"></a>11.<a href="https://github.com/yangxu4536/MeiTuanLocateCity" target="_blank" rel="external">仿美团城市选择界面:MeiTuanLocateCity</a></h3><h3 id="12-一款按字母排序库，已封装好城市数据，风格仿美团-EasySideBar"><a href="#12-一款按字母排序库，已封装好城市数据，风格仿美团-EasySideBar" class="headerlink" title="12.一款按字母排序库，已封装好城市数据，风格仿美团:EasySideBar"></a>12.<a href="https://github.com/Bigkoo/EasySideBar" target="_blank" rel="external">一款按字母排序库，已封装好城市数据，风格仿美团:EasySideBar</a></h3><h3 id="13-多条件筛选菜单-类似美团，爱奇艺电影票下拉菜单DropDownMenu"><a href="#13-多条件筛选菜单-类似美团，爱奇艺电影票下拉菜单DropDownMenu" class="headerlink" title="13.多条件筛选菜单:类似美团，爱奇艺电影票下拉菜单DropDownMenu"></a>13.<a href="https://github.com/dongjunkun/DropDownMenu" target="_blank" rel="external">多条件筛选菜单:类似美团，爱奇艺电影票下拉菜单DropDownMenu</a></h3><h3 id="14-优惠券效果-CouponView"><a href="#14-优惠券效果-CouponView" class="headerlink" title="14.优惠券效果:CouponView"></a>14.<a href="https://github.com/dongjunkun/CouponView" target="_blank" rel="external">优惠券效果:CouponView</a></h3><h3 id="15-轮播图控件①：AndroidImageSliderByFresco"><a href="#15-轮播图控件①：AndroidImageSliderByFresco" class="headerlink" title="15.轮播图控件①：AndroidImageSliderByFresco"></a>15.<a href="https://github.com/glassLake/AndroidImageSliderByFresco" target="_blank" rel="external">轮播图控件①：AndroidImageSliderByFresco</a></h3><h3 id="16-轮播图控件②：Android-ConvenientBanner"><a href="#16-轮播图控件②：Android-ConvenientBanner" class="headerlink" title="16.轮播图控件②：Android-ConvenientBanner"></a>16.<a href="https://github.com/saiwu-bigkoo/Android-ConvenientBanner" target="_blank" rel="external">轮播图控件②：Android-ConvenientBanner</a></h3><h3 id="17-轮播图控件③：banner"><a href="#17-轮播图控件③：banner" class="headerlink" title="17.轮播图控件③：banner"></a>17.<a href="https://github.com/youth5201314/banner" target="_blank" rel="external">轮播图控件③：banner</a></h3><h3 id="18-快速索引：Android-QuickSideBar"><a href="#18-快速索引：Android-QuickSideBar" class="headerlink" title="18.快速索引：Android-QuickSideBar"></a>18.<a href="https://github.com/saiwu-bigkoo/Android-QuickSideBar" target="_blank" rel="external">快速索引：Android-QuickSideBar</a></h3><h3 id="19-快速索引：EasyRecyclerViewSidebar"><a href="#19-快速索引：EasyRecyclerViewSidebar" class="headerlink" title="19.快速索引：EasyRecyclerViewSidebar"></a>19.<a href="https://github.com/CaMnter/EasyRecyclerViewSidebar" target="_blank" rel="external">快速索引：EasyRecyclerViewSidebar</a></h3><h3 id="20-快速索引：WaveSideBar"><a href="#20-快速索引：WaveSideBar" class="headerlink" title="20.快速索引：WaveSideBar"></a>20.<a href="https://github.com/gjiazhe/WaveSideBar" target="_blank" rel="external">快速索引：WaveSideBar</a></h3><h3 id="21-给图片打标签：Android-PictureTagView"><a href="#21-给图片打标签：Android-PictureTagView" class="headerlink" title="21.给图片打标签：Android-PictureTagView"></a>21.<a href="https://github.com/saiwu-bigkoo/Android-PictureTagView" target="_blank" rel="external">给图片打标签：Android-PictureTagView</a></h3><h3 id="22-滚动刻度尺-ScaleView"><a href="#22-滚动刻度尺-ScaleView" class="headerlink" title="22.滚动刻度尺:ScaleView"></a>22.<a href="https://github.com/LichFaker/ScaleView" target="_blank" rel="external">滚动刻度尺:ScaleView</a></h3><h3 id="23-加减号控制数字增减-Android-SnappingStepper"><a href="#23-加减号控制数字增减-Android-SnappingStepper" class="headerlink" title="23.加减号控制数字增减:Android-SnappingStepper"></a>23.<a href="https://github.com/saiwu-bigkoo/Android-SnappingStepper" target="_blank" rel="external">加减号控制数字增减:Android-SnappingStepper</a></h3><h3 id="24-状态栏变色-SystemBarTint"><a href="#24-状态栏变色-SystemBarTint" class="headerlink" title="24.状态栏变色:SystemBarTint"></a>24.<a href="https://github.com/jgilfelt/SystemBarTint" target="_blank" rel="external">状态栏变色:SystemBarTint</a></h3><h5 id="24-1简化使用-MainActivityUIUtil"><a href="#24-1简化使用-MainActivityUIUtil" class="headerlink" title="24.1简化使用:MainActivityUIUtil"></a>24.1<a href="https://github.com/hss01248/MainActivityUIUtil" target="_blank" rel="external">简化使用:MainActivityUIUtil</a></h5><h3 id="25-文件下载"><a href="#25-文件下载" class="headerlink" title="25.文件下载"></a>25.<a href="https://github.com/lingochamp/FileDownloader" target="_blank" rel="external">文件下载</a></h3><h3 id="26-数据库：ormlite"><a href="#26-数据库：ormlite" class="headerlink" title="26.数据库：ormlite"></a>26.<a href="https://github.com/j256/ormlite-android" target="_blank" rel="external">数据库：ormlite</a></h3><h5 id="26-1数据库调试方式，无需root-在浏览器端通过http请求的方式直接查看和操作数据库-方便快捷"><a href="#26-1数据库调试方式，无需root-在浏览器端通过http请求的方式直接查看和操作数据库-方便快捷" class="headerlink" title="26.1数据库调试方式，无需root.在浏览器端通过http请求的方式直接查看和操作数据库,方便快捷"></a>26.1<a href="https://github.com/amitshekhariitbhu/Android-Debug-Database" target="_blank" rel="external">数据库调试方式，无需root.在浏览器端通过http请求的方式直接查看和操作数据库,方便快捷</a></h5><h3 id="27-网络错误，空页面等这种状态页面管理：PageStateManager"><a href="#27-网络错误，空页面等这种状态页面管理：PageStateManager" class="headerlink" title="27.网络错误，空页面等这种状态页面管理：PageStateManager"></a>27.<a href="https://github.com/hss01248/PageStateManager" target="_blank" rel="external">网络错误，空页面等这种状态页面管理：PageStateManager</a></h3><h3 id="28-工具类库：AndroidUtilCode"><a href="#28-工具类库：AndroidUtilCode" class="headerlink" title="28.工具类库：AndroidUtilCode"></a>28.<a href="https://github.com/Blankj/AndroidUtilCode" target="_blank" rel="external">工具类库：AndroidUtilCode</a></h3><h3 id="29-键盘监听：KeyboardVisibilityEvent"><a href="#29-键盘监听：KeyboardVisibilityEvent" class="headerlink" title="29.键盘监听：KeyboardVisibilityEvent"></a>29.<a href="https://github.com/yshrsmz/KeyboardVisibilityEvent" target="_blank" rel="external">键盘监听：KeyboardVisibilityEvent</a></h3><pre><code>`防止自动弹出键盘:
+ activity 标签里加android:windowSoftInputMode=&quot;stateHidden|stateAlwaysHidden&quot;`
+</code></pre><h3 id="30-视频播放：jjdxm-ijkplayer"><a href="#30-视频播放：jjdxm-ijkplayer" class="headerlink" title="30.视频播放：jjdxm_ijkplayer"></a>30.<a href="https://github.com/jjdxmashl/jjdxm_ijkplayer" target="_blank" rel="external">视频播放：jjdxm_ijkplayer</a></h3><h3 id="31-屏幕适配-AndroidAutoLayout"><a href="#31-屏幕适配-AndroidAutoLayout" class="headerlink" title="31.屏幕适配:AndroidAutoLayout"></a>31.<a href="https://github.com/hongyangAndroid/AndroidAutoLayout" target="_blank" rel="external">屏幕适配:AndroidAutoLayout</a></h3><h3 id="32-水波纹效果-RippleEffect"><a href="#32-水波纹效果-RippleEffect" class="headerlink" title="32.水波纹效果:RippleEffect"></a>32.<a href="https://github.com/traex/RippleEffect" target="_blank" rel="external">水波纹效果:RippleEffect</a></h3><h3 id="33-动画-ViewAnimator"><a href="#33-动画-ViewAnimator" class="headerlink" title="33.动画:ViewAnimator"></a>33.<a href="https://github.com/florent37/ViewAnimator" target="_blank" rel="external">动画:ViewAnimator</a></h3><h3 id="34-换皮肤主题-ChangeSkin"><a href="#34-换皮肤主题-ChangeSkin" class="headerlink" title="34.换皮肤主题:ChangeSkin"></a>34.<a href="https://github.com/hongyangAndroid/ChangeSkin" target="_blank" rel="external">换皮肤主题:ChangeSkin</a></h3><h3 id="35-文件和缓存"><a href="#35-文件和缓存" class="headerlink" title="35.文件和缓存"></a>35.文件和缓存</h3><h5 id="35-1Treasure"><a href="#35-1Treasure" class="headerlink" title="35.1Treasure"></a>35.1<a href="https://github.com/baoyongzhang/Treasure" target="_blank" rel="external">Treasure</a></h5><h5 id="35-2easy-content-providers"><a href="#35-2easy-content-providers" class="headerlink" title="35.2easy-content-providers"></a>35.2<a href="https://github.com/EverythingMe/easy-content-providers" target="_blank" rel="external">easy-content-providers</a></h5><h5 id="35-3dualcache"><a href="#35-3dualcache" class="headerlink" title="35.3dualcache"></a>35.3<a href="https://github.com/vincentbrison/dualcache" target="_blank" rel="external">dualcache</a></h5><h3 id="36-各种样式的EditText"><a href="#36-各种样式的EditText" class="headerlink" title="36.各种样式的EditText"></a>36.<a href="https://github.com/rengwuxian/MaterialEditText" target="_blank" rel="external">各种样式的EditText</a></h3><h3 id="31-ViewPage"><a href="#31-ViewPage" class="headerlink" title="31.ViewPage"></a>31.<a href="https://github.com/Devlight/InfiniteCycleViewPager" target="_blank" rel="external">ViewPage</a></h3><h3 id="32-ImagePicker"><a href="#32-ImagePicker" class="headerlink" title="32.ImagePicker"></a>32.<a href="https://github.com/jeasonlzy/ImagePicker" target="_blank" rel="external">ImagePicker</a></h3><p>完全仿微信的图片选择，并且提供了多种图片加载接口，选择图片后可以旋转，可以裁剪成矩形或圆形，可以配置各种其他的参数</p>
+<h3 id="33-PictureSelector"><a href="#33-PictureSelector" class="headerlink" title="33.PictureSelector"></a>33.<a href="https://github.com/LuckSiege/PictureSelector" target="_blank" rel="external">PictureSelector</a></h3><p>android多图选择器 图片/视频 单选or多选，以及视频录制</p>
+<h3 id="34-Matisse"><a href="#34-Matisse" class="headerlink" title="34.Matisse"></a>34.<a href="https://github.com/zhihu/Matisse" target="_blank" rel="external">Matisse</a></h3><p>知乎开源图片选择器,支持主题切换</p>
+<h3 id="35-greenDAO"><a href="#35-greenDAO" class="headerlink" title="35.greenDAO"></a>35.<a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">greenDAO</a></h3><p>存取速度快,支持数据库加密,轻量级,支持缓存,代码自动生成</p>
+<h3 id="36-LitePal数据库"><a href="#36-LitePal数据库" class="headerlink" title="36.LitePal数据库"></a>36.<a href="https://github.com/LitePalFramework/LitePal" target="_blank" rel="external">LitePal数据库</a></h3><h3 id="37-Android工具类库"><a href="#37-Android工具类库" class="headerlink" title="37.Android工具类库"></a>37.<a href="https://github.com/jingle1267/android-utils" target="_blank" rel="external">Android工具类库</a></h3><h3 id="38-Android开发人员不得不收集的代码"><a href="#38-Android开发人员不得不收集的代码" class="headerlink" title="38.Android开发人员不得不收集的代码"></a>38.<a href="https://github.com/Blankj/AndroidUtilCode/blob/master/README-CN.md" target="_blank" rel="external">Android开发人员不得不收集的代码</a></h3><h3 id="39-AndPermission安卓权限库"><a href="#39-AndPermission安卓权限库" class="headerlink" title="39.AndPermission安卓权限库"></a>39.<a href="https://github.com/yanzhenjie/AndPermission" target="_blank" rel="external">AndPermission安卓权限库</a></h3><h3 id="40-沉浸式状态栏"><a href="#40-沉浸式状态栏" class="headerlink" title="40.沉浸式状态栏"></a>40.<a href="https://github.com/H07000223/FlycoSystemBar" target="_blank" rel="external">沉浸式状态栏</a></h3><h3 id="41-AndroidAutoLayout-屏幕适配"><a href="#41-AndroidAutoLayout-屏幕适配" class="headerlink" title="41.AndroidAutoLayout 屏幕适配"></a>41.<a href="https://github.com/hongyangAndroid/AndroidAutoLayout" target="_blank" rel="external">AndroidAutoLayout 屏幕适配</a></h3><h3 id="42-PreviewSeekBar-视频播放"><a href="#42-PreviewSeekBar-视频播放" class="headerlink" title="42.PreviewSeekBar 视频播放"></a>42.<a href="https://github.com/rubensousa/PreviewSeekBar" target="_blank" rel="external">PreviewSeekBar 视频播放</a></h3><h3 id="43-JieCaoVideoPlayer-视频播放"><a href="#43-JieCaoVideoPlayer-视频播放" class="headerlink" title="43.JieCaoVideoPlayer 视频播放"></a>43.<a href="https://github.com/lipangit/JieCaoVideoPlayer" target="_blank" rel="external">JieCaoVideoPlayer 视频播放</a></h3><h3 id="44-SuperPlayer-视频播放"><a href="#44-SuperPlayer-视频播放" class="headerlink" title="44.SuperPlayer 视频播放"></a>44.<a href="https://github.com/Haxine/SuperPlayer" target="_blank" rel="external">SuperPlayer 视频播放</a></h3><p>SuperPlayer 是一个基于IjkPlayer的控制器，支持手势操作，滑动快进，快退，支持，上滑音量亮度的变化，支持指点位置播放，播放源的切换</p>
+<h3 id="45-jjdxm-ijkplayer-视频播放"><a href="#45-jjdxm-ijkplayer-视频播放" class="headerlink" title="45.jjdxm_ijkplayer 视频播放"></a>45.<a href="https://github.com/jjdxmashl/jjdxm_ijkplayer" target="_blank" rel="external">jjdxm_ijkplayer 视频播放</a></h3><h3 id="46-SwitchButton-开关按钮"><a href="#46-SwitchButton-开关按钮" class="headerlink" title="46.SwitchButton 开关按钮"></a>46.<a href="https://github.com/kyleduo/SwitchButton" target="_blank" rel="external">SwitchButton 开关按钮</a></h3><h3 id="47-JellyToggleButton-开关按钮"><a href="#47-JellyToggleButton-开关按钮" class="headerlink" title="47.JellyToggleButton 开关按钮"></a>47.<a href="https://github.com/Nightonke/JellyToggleButton" target="_blank" rel="external">JellyToggleButton 开关按钮</a></h3><h3 id="48-XCL-Charts-图标库"><a href="#48-XCL-Charts-图标库" class="headerlink" title="48.XCL-Charts 图标库"></a>48.<a href="https://github.com/xcltapestry/XCL-Charts" target="_blank" rel="external">XCL-Charts 图标库</a></h3><h3 id="49-Android-ObservableScrollView-沉浸式"><a href="#49-Android-ObservableScrollView-沉浸式" class="headerlink" title="49.Android-ObservableScrollView     沉浸式"></a>49.<a href="https://github.com/ksoichiro/Android-ObservableScrollView" target="_blank" rel="external">Android-ObservableScrollView     沉浸式</a></h3><h3 id="50-GoodView-点赞动画"><a href="#50-GoodView-点赞动画" class="headerlink" title="50.GoodView 点赞动画"></a>50.<a href="https://github.com/venshine/GoodView" target="_blank" rel="external">GoodView 点赞动画</a></h3><h1 id="三、刷新加载框架"><a href="#三、刷新加载框架" class="headerlink" title="三、刷新加载框架"></a>三、刷新加载框架</h1><h3 id="1-XRecyclerView"><a href="#1-XRecyclerView" class="headerlink" title="1.XRecyclerView"></a>1.<a href="https://github.com/jianghejie/XRecyclerView" target="_blank" rel="external">XRecyclerView</a></h3><h3 id="2-TwinklingRefreshLayout"><a href="#2-TwinklingRefreshLayout" class="headerlink" title="2.TwinklingRefreshLayout"></a>2.<a href="https://github.com/lcodecorex/TwinklingRefreshLayout" target="_blank" rel="external">TwinklingRefreshLayout</a></h3><h3 id="3-android-pulltorefresh"><a href="#3-android-pulltorefresh" class="headerlink" title="3.android-pulltorefresh"></a>3.<a href="https://github.com/chrisbanes/Android-PullToRefresh" target="_blank" rel="external">android-pulltorefresh</a></h3><p>一个强大的拉动刷新开源项目，支持各种控件下拉刷新，ListView、ViewPager、WebView、ExpandableListView、GridView、ScrollView、Horizontal ScrollView、Fragment 上下左右拉动刷新，比下面 johannilsson 那个只支持 ListView 的强大的多。并且它实现的下拉刷新 ListView 在 item 不足一屏情况下也不会显示刷新提示，体验更好。<br>Demo 地址：<a href="https://github.com/Trinea/TrineaDownload/blob/master/pull-to-refreshview-demo.apk?raw=true" target="_blank" rel="external">https://github.com/Trinea/TrineaDownload/blob/master/pull-to-refreshview-demo.apk?raw=true</a><br>APP 示例：新浪微博各个页面</p>
+<h3 id="4-Android-PullToRefreshRecyclerView"><a href="#4-Android-PullToRefreshRecyclerView" class="headerlink" title="4.Android-PullToRefreshRecyclerView"></a>4.<a href="https://github.com/HomHomLin/Android-PullToRefreshRecyclerView" target="_blank" rel="external">Android-PullToRefreshRecyclerView</a></h3><p>支持下拉刷新的RecyclerView，同时支持滑动到底部自动加载数据、给RecyclerView添加Header。并且不更改原有RecyclerView的逻辑。<br>Demo地址：<a href="https://github.com/HomHomLin/Android-PullToRefreshRecyclerView/blob/master/sample.apk" target="_blank" rel="external">https://github.com/HomHomLin/Android-PullToRefreshRecyclerView/blob/master/sample.apk</a></p>
+<h3 id="5-DragSortListView"><a href="#5-DragSortListView" class="headerlink" title="5.DragSortListView"></a>5.<a href="https://github.com/bauerca/drag-sort-listview" target="_blank" rel="external">DragSortListView</a></h3><p>拖动排序的 ListView，同时支持 ListView 滑动 item 删除，各个 Item 高度不一、单选、复选、CursorAdapter 做为适配器、拖动背景变化等<br>Demo 地址：<a href="https://play.google.com/store/apps/details?id=com.mobeta.android.demodslv" target="_blank" rel="external">https://play.google.com/store/apps/details?id=com.mobeta.android.demodslv</a><br>APP 示例：Wordpress Android</p>
+<h3 id="6-SwipeListView"><a href="#6-SwipeListView" class="headerlink" title="6.SwipeListView"></a>6.<a href="https://github.com/47deg/android-swipelistview" target="_blank" rel="external">SwipeListView</a></h3><p>支持定义 ListView 左右滑动事件，支持左右滑动位移，支持定义动画时间<br>Demo 地址：<a href="https://play.google.com/store/apps/details?id=com.fortysevendeg.android.swipelistview" target="_blank" rel="external">https://play.google.com/store/apps/details?id=com.fortysevendeg.android.swipelistview</a><br>APP 示例：微信</p>
+<h3 id="7-SlideAndDragListView"><a href="#7-SlideAndDragListView" class="headerlink" title="7.SlideAndDragListView"></a>7.<a href="https://github.com/yydcdut/SlideAndDragListView" target="_blank" rel="external">SlideAndDragListView</a></h3><p>支持ListView的Item的拖动排序、左右滑动事件，可自定义左右滑动显示文字、图标、位移，同时支持onItemClick、onItemLongClick等监听器，提供丰富的回调接口。</p>
+<p> Demo 地址：<a href="https://github.com/yydcdut/SlideAndDragListView/blob/master/apk/sdlv.apk?raw=true" target="_blank" rel="external">https://github.com/yydcdut/SlideAndDragListView/blob/master/apk/sdlv.apk?raw=true</a></p>
+<p>APP 示例：Android 手机QQ 5.0</p>
+<h3 id="8-Android-SwipeToDismiss"><a href="#8-Android-SwipeToDismiss" class="headerlink" title="8.Android-SwipeToDismiss"></a>8.<a href="https://github.com/romannurik/Android-SwipeToDismiss" target="_blank" rel="external">Android-SwipeToDismiss</a></h3><p>滑动 Item 消失 ListView，支持 3.0 以下版本见：<a href="https://github.com/JakeWharton/SwipeToDismissNOA" target="_blank" rel="external">https://github.com/JakeWharton/SwipeToDismissNOA</a></p>
+<p>Demo 地址：<a href="https://github.com/JakeWharton/SwipeToDismissNOA/SwipeToDismissNOA.apk/qr_code" target="_blank" rel="external">https://github.com/JakeWharton/SwipeToDismissNOA/SwipeToDismissNOA.apk/qr_code</a></p>
+<h3 id="9-RecyclerViewSwipeDismiss"><a href="#9-RecyclerViewSwipeDismiss" class="headerlink" title="9.RecyclerViewSwipeDismiss"></a>9.<a href="https://github.com/CodeFalling/RecyclerViewSwipeDismiss" target="_blank" rel="external">RecyclerViewSwipeDismiss</a></h3><p>轻量级支持 support-v7 中的 RecyclerView 的滑动删除(Swipe to dismiss)行为，不需要修改源代码，只要简单的绑定onTouchListener</p>
+<h3 id="10-PinnedHeaderExpandableListView"><a href="#10-PinnedHeaderExpandableListView" class="headerlink" title="10.PinnedHeaderExpandableListView"></a>10.<a href="https://github.com/singwhatiwanna/PinnedHeaderExpandableListView" target="_blank" rel="external">PinnedHeaderExpandableListView</a></h3><p>首先它是一个 ExpandableListView，但是它的头部可以固定，其次，在它的上面还有一个头部可以来回伸缩</p>
+<p>APP 示例：百度手机卫士垃圾清理界面</p>
+<h3 id="11-StickyListHeaders"><a href="#11-StickyListHeaders" class="headerlink" title="11.StickyListHeaders"></a>11.<a href="https://github.com/emilsjolander/StickyListHeaders" target="_blank" rel="external">StickyListHeaders</a></h3><p>GroupName 滑动到顶端时会固定不动直到另外一个 GroupName 到达顶端的 ExpandListView，支持快速滑动，支持 Android2.3 及以上</p>
+<p>APP 示例：Android 4.0 联系人</p>
+<h3 id="12-pinned-section-listview"><a href="#12-pinned-section-listview" class="headerlink" title="12.pinned-section-listview"></a>12.<a href="https://github.com/beworker/pinned-section-listview" target="_blank" rel="external">pinned-section-listview</a></h3><p>GroupName 滑动到顶端时会固定不动直到另外一个 GroupName 到达顶端的 ExpandListView</p>
+<h3 id="13-PinnedHeaderListView"><a href="#13-PinnedHeaderListView" class="headerlink" title="13.PinnedHeaderListView"></a>13.<a href="https://github.com/JimiSmith/PinnedHeaderListView" target="_blank" rel="external">PinnedHeaderListView</a></h3><p>GroupName 滑动到顶端时会固定不动直到另外一个 GroupName 到达顶端的 ExpandListView</p>
+<h3 id="14-QuickReturn"><a href="#14-QuickReturn" class="headerlink" title="14.QuickReturn"></a>14.<a href="https://github.com/lawloretienne/QuickReturn" target="_blank" rel="external">QuickReturn</a></h3><p>ListView/ScrollView 的 header 或 footer，当向下滚动时消失，向上滚动时出现</p>
+<p>Demo 地址：<a href="https://play.google.com/store/apps/details?id=com.etiennelawlor.quickreturn" target="_blank" rel="external">https://play.google.com/store/apps/details?id=com.etiennelawlor.quickreturn</a></p>
+<h3 id="15-QuickReturnHeader"><a href="#15-QuickReturnHeader" class="headerlink" title="15.QuickReturnHeader"></a>15.<a href="https://github.com/ManuelPeinado/QuickReturnHeader" target="_blank" rel="external">QuickReturnHeader</a></h3><p>ListView/ScrollView 的 header 或 footer，当向下滚动时消失，向上滚动时出现</p>
+<p>Demo 地址：<a href="https://github.com/Trinea/TrineaDownload/blob/master/quick-return-header-demo.apk?raw=true" target="_blank" rel="external">https://github.com/Trinea/TrineaDownload/blob/master/quick-return-header-demo.apk?raw=true</a></p>
+<h1 id="四、网络请求框架"><a href="#四、网络请求框架" class="headerlink" title="四、网络请求框架"></a>四、网络请求框架</h1><h3 id="1-okhttp-OkGo"><a href="#1-okhttp-OkGo" class="headerlink" title="1.okhttp-OkGo"></a>1.<a href="https://github.com/jeasonlzy/okhttp-OkGo" target="_blank" rel="external">okhttp-OkGo</a></h3><h3 id="2-HttpUtilForAndroid"><a href="#2-HttpUtilForAndroid" class="headerlink" title="2.HttpUtilForAndroid"></a>2.<a href="https://github.com/hss01248/HttpUtilForAndroid" target="_blank" rel="external">HttpUtilForAndroid</a></h3><h3 id="3-okhttputils"><a href="#3-okhttputils" class="headerlink" title="3.okhttputils"></a>3.<a href="https://github.com/hongyangAndroid/okhttputils" target="_blank" rel="external">okhttputils</a></h3><h1 id="五、学习资料"><a href="#五、学习资料" class="headerlink" title="五、学习资料"></a>五、学习资料</h1><h3 id="1-关于-Material-Design-的一切资料都在这里"><a href="#1-关于-Material-Design-的一切资料都在这里" class="headerlink" title="1.关于 Material Design 的一切资料都在这里"></a>1.<a href="https://github.com/Luosunce/material-design-data" target="_blank" rel="external">关于 Material Design 的一切资料都在这里</a></h3><h3 id="2-热修复"><a href="#2-热修复" class="headerlink" title="2.热修复"></a>2.<a href="https://bugly.qq.com/docs/user-guide/instruction-manual-android-hotfix/?v=20170413153245" target="_blank" rel="external">热修复</a></h3>
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="左文站" />
+          <p class="site-author-name" itemprop="name">左文站</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左文站</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "68b7fd0c14974964bb8bc7dbe7a34d69",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("vL8PNDBtyegKd6KMTvEeN7M5-gzGzoHsz", "kxEWPUUrnHF20Kij9gSNh82o");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

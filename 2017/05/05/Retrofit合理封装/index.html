@@ -1,0 +1,900 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1.自定义CallBack自定义完响应体之后，那么问题又来了，error_code会有不同的值，而不同的值需要我们所做的操作不同，举个例子，我们的需求是 0-请求成功1-请求失败，登录过期2-请求失败，无权限3-请求失败-余额不足….">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retrofit--合理封装回调">
+<meta property="og:url" content="http://yoursite.com/2017/05/05/Retrofit合理封装/index.html">
+<meta property="og:site_name" content="Android进阶之路--左文站">
+<meta property="og:description" content="1.自定义CallBack自定义完响应体之后，那么问题又来了，error_code会有不同的值，而不同的值需要我们所做的操作不同，举个例子，我们的需求是 0-请求成功1-请求失败，登录过期2-请求失败，无权限3-请求失败-余额不足….">
+<meta property="og:updated_time" content="2017-05-10T05:41:45.532Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retrofit--合理封装回调">
+<meta name="twitter:description" content="1.自定义CallBack自定义完响应体之后，那么问题又来了，error_code会有不同的值，而不同的值需要我们所做的操作不同，举个例子，我们的需求是 0-请求成功1-请求失败，登录过期2-请求失败，无权限3-请求失败-余额不足….">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/05/Retrofit合理封装/"/>
+
+
+
+
+
+  <title>Retrofit--合理封装回调 | Android进阶之路--左文站</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Android进阶之路--左文站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            GitHub集锦
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            作者简介
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/05/Retrofit合理封装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左文站">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Android进阶之路--左文站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Retrofit--合理封装回调</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-05T11:09:08+08:00">
+                2017-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/05/05/Retrofit合理封装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/05/05/Retrofit合理封装/" class="leancloud_visitors" data-flag-title="Retrofit--合理封装回调">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-自定义CallBack"><a href="#1-自定义CallBack" class="headerlink" title="1.自定义CallBack"></a>1.自定义CallBack</h2><p>自定义完响应体之后，那么问题又来了，error_code会有不同的值，而不同的值需要我们所做的操作不同，举个例子，我们的需求是</p>
+<h6 id="0-请求成功"><a href="#0-请求成功" class="headerlink" title="0-请求成功"></a>0-请求成功</h6><h6 id="1-请求失败，登录过期"><a href="#1-请求失败，登录过期" class="headerlink" title="1-请求失败，登录过期"></a>1-请求失败，登录过期</h6><h6 id="2-请求失败，无权限"><a href="#2-请求失败，无权限" class="headerlink" title="2-请求失败，无权限"></a>2-请求失败，无权限</h6><h6 id="3-请求失败-余额不足"><a href="#3-请求失败-余额不足" class="headerlink" title="3-请求失败-余额不足"></a>3-请求失败-余额不足</h6><h6 id="…"><a href="#…" class="headerlink" title="…."></a>….</h6><a id="more"></a>
+<p>假如登录过期需要我们重新登录，跳转到登录界面的话，我们不可能在每个网络请求的回调里面都去判断error_code吧？那样岂不是很….,所以就有了它：</p>
+<pre><code>import java.net.ConnectException; 
+import java.net.SocketTimeoutException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+/**
+  * Created by Hankkin on 2016/6/4.
+ */
+public abstract class MyCallback&lt;T extends BaseCallModel&gt; implements Callback&lt;T&gt; {
+@Override
+public void onResponse(Call&lt;T&gt; call, Response&lt;T&gt; response) {
+    if (response.raw().code() == 200) {//200是服务器有合理响应
+        if(response.body().errno == 0){
+            onSuc(response);
+        }
+        else if (response.body().errno == 1){
+
+        }
+        else if (response.body().errno == 2){
+            onAutoLogin();
+        }
+        else if (){
+
+        }
+        .
+        .
+        .
+        else {
+            onFail(response.body().msg);
+        }
+
+    } else {//失败响应
+        onFailure(call, new RuntimeException(&quot;response error,detail = &quot; + response.raw().toString()));
+    }
+}
+
+@Override
+public void onFailure(Call&lt;T&gt; call, Throwable t) {//网络问题会走该回调
+    if(t instanceof SocketTimeoutException){
+        //
+    }else if(t instanceof ConnectException){
+      //
+    }else if(t instanceof RuntimeException){
+        //
+    }
+    onFail(t.getMessage());
+}
+
+public abstract void onSuc(Response&lt;T&gt; response);
+
+public abstract void onFail(String message);
+
+public abstract void onAutoLogin();
+
+}
+</code></pre><h6 id="我自定义了一个抽象类实现了Retrofit的CallBack-lt-gt-OnResponse-方法里面去判断网络请求正常的各种情况，onFailure-方法里面则是网络有问题会走该回调。而OnResponse-回调中也有可能网络请求失败，根据response-raw-code-去判断；然后你也可以根据异常出现的状况去执行不同的UI，例如："><a href="#我自定义了一个抽象类实现了Retrofit的CallBack-lt-gt-OnResponse-方法里面去判断网络请求正常的各种情况，onFailure-方法里面则是网络有问题会走该回调。而OnResponse-回调中也有可能网络请求失败，根据response-raw-code-去判断；然后你也可以根据异常出现的状况去执行不同的UI，例如：" class="headerlink" title="我自定义了一个抽象类实现了Retrofit的CallBack&lt;&gt;,OnResponse()方法里面去判断网络请求正常的各种情况，onFailure()方法里面则是网络有问题会走该回调。而OnResponse()回调中也有可能网络请求失败，根据response.raw().code()去判断；然后你也可以根据异常出现的状况去执行不同的UI，例如："></a>我自定义了一个抽象类实现了Retrofit的CallBack&lt;&gt;,OnResponse()方法里面去判断网络请求正常的各种情况，onFailure()方法里面则是网络有问题会走该回调。而OnResponse()回调中也有可能网络请求失败，根据response.raw().code()去判断；然后你也可以根据异常出现的状况去执行不同的UI，例如：</h6><pre><code>if(t instanceof SocketTimeoutException){
+     //
+ }else if(t instanceof ConnectException){
+     //
+ }else if(t instanceof RuntimeException){
+    //
+ }
+</code></pre><h2 id="2-封装BaseCallModel"><a href="#2-封装BaseCallModel" class="headerlink" title="2.封装BaseCallModel"></a>2.封装BaseCallModel</h2><p>一定是有code状态码和返回信息的，我之前的用法和教程一样，说将服务器返回的结果复制下来直接在AS上面利用GsonFormat转化就OK了，确实很方便，但是这样下来每个bean里面都会有重复的erroe_code和message或者服务器返回其他，所以我是这样做的：</p>
+<pre><code>public class BaseCallModel&lt;T&gt; {
+public int errno;
+public String msg;
+public T data;
+}
+</code></pre><p>定义一个BaseCallModel，利用泛型去适合服务器返回的所有的bean，而你在定义一个API接口的时候就可以这样定义：</p>
+<pre><code>@GET(&quot;user/login&quot;)
+Call&lt;BaseCallModel&lt;User&gt;&gt; doLogin(@Query(&quot;email&quot;) String email, @Query(&quot;password&quot;) String pwd);
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/04/Retrofit设置OKHttp/" rel="next" title="使用Retrofit去设置OKHttp">
+                <i class="fa fa-chevron-left"></i> 使用Retrofit去设置OKHttp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/05/Retrofit-2/" rel="prev" title="Retrofit用法详解">
+                Retrofit用法详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="左文站" />
+          <p class="site-author-name" itemprop="name">左文站</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-自定义CallBack"><span class="nav-number">1.</span> <span class="nav-text">1.自定义CallBack</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#0-请求成功"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">0-请求成功</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-请求失败，登录过期"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">1-请求失败，登录过期</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-请求失败，无权限"><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">2-请求失败，无权限</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-请求失败-余额不足"><span class="nav-number">1.0.0.0.4.</span> <span class="nav-text">3-请求失败-余额不足</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#…"><span class="nav-number">1.0.0.0.5.</span> <span class="nav-text">….</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#我自定义了一个抽象类实现了Retrofit的CallBack-lt-gt-OnResponse-方法里面去判断网络请求正常的各种情况，onFailure-方法里面则是网络有问题会走该回调。而OnResponse-回调中也有可能网络请求失败，根据response-raw-code-去判断；然后你也可以根据异常出现的状况去执行不同的UI，例如："><span class="nav-number">1.0.0.0.6.</span> <span class="nav-text">我自定义了一个抽象类实现了Retrofit的CallBack<>,OnResponse()方法里面去判断网络请求正常的各种情况，onFailure()方法里面则是网络有问题会走该回调。而OnResponse()回调中也有可能网络请求失败，根据response.raw().code()去判断；然后你也可以根据异常出现的状况去执行不同的UI，例如：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-封装BaseCallModel"><span class="nav-number">2.</span> <span class="nav-text">2.封装BaseCallModel</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左文站</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "68b7fd0c14974964bb8bc7dbe7a34d69",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("vL8PNDBtyegKd6KMTvEeN7M5-gzGzoHsz", "kxEWPUUrnHF20Kij9gSNh82o");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

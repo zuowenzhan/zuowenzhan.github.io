@@ -1,0 +1,868 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一、用到软件，前提安装软件1.安装Node.js软件，都是下一步2.安装git软件下载地址3.安装hexo3.1右键运行git，打开窗口命令：$ npm install -g hexo-cli 3.2、检验是否安装成功了命令：hexo -v 4、NexT模板简介NexT 拥有丰富而简单的配置,结合第三方服务,打造属于您自己的博客 主题配置 NexT 坚持将复杂的细节隐藏,提供尽量少并且简便的设置,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="教你怎么搭建个人博客">
+<meta property="og:url" content="http://yoursite.com/2017/04/19/搭建个人博客/index.html">
+<meta property="og:site_name" content="Android进阶之路--左文站">
+<meta property="og:description" content="一、用到软件，前提安装软件1.安装Node.js软件，都是下一步2.安装git软件下载地址3.安装hexo3.1右键运行git，打开窗口命令：$ npm install -g hexo-cli 3.2、检验是否安装成功了命令：hexo -v 4、NexT模板简介NexT 拥有丰富而简单的配置,结合第三方服务,打造属于您自己的博客 主题配置 NexT 坚持将复杂的细节隐藏,提供尽量少并且简便的设置,">
+<meta property="og:updated_time" content="2017-05-11T01:31:37.155Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="教你怎么搭建个人博客">
+<meta name="twitter:description" content="一、用到软件，前提安装软件1.安装Node.js软件，都是下一步2.安装git软件下载地址3.安装hexo3.1右键运行git，打开窗口命令：$ npm install -g hexo-cli 3.2、检验是否安装成功了命令：hexo -v 4、NexT模板简介NexT 拥有丰富而简单的配置,结合第三方服务,打造属于您自己的博客 主题配置 NexT 坚持将复杂的细节隐藏,提供尽量少并且简便的设置,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/19/搭建个人博客/"/>
+
+
+
+
+
+  <title>教你怎么搭建个人博客 | Android进阶之路--左文站</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Android进阶之路--左文站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            GitHub集锦
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            作者简介
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-home " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/19/搭建个人博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左文站">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Android进阶之路--左文站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">教你怎么搭建个人博客</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T18:46:46+08:00">
+                2017-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/04/19/搭建个人博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/04/19/搭建个人博客/" class="leancloud_visitors" data-flag-title="教你怎么搭建个人博客">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、用到软件，前提安装软件"><a href="#一、用到软件，前提安装软件" class="headerlink" title="一、用到软件，前提安装软件"></a>一、用到软件，前提安装软件</h1><h2 id="1-安装Node-js软件，都是下一步"><a href="#1-安装Node-js软件，都是下一步" class="headerlink" title="1.安装Node.js软件，都是下一步"></a>1.安装Node.js软件，都是下一步</h2><h2 id="2-安装git软件下载地址"><a href="#2-安装git软件下载地址" class="headerlink" title="2.安装git软件下载地址"></a>2.安装git软件<a href="https://git-scm.com/download/win" target="_blank" rel="external">下载地址</a></h2><h2 id="3-安装hexo"><a href="#3-安装hexo" class="headerlink" title="3.安装hexo"></a>3.安装hexo</h2><h3 id="3-1右键运行git，打开窗口"><a href="#3-1右键运行git，打开窗口" class="headerlink" title="3.1右键运行git，打开窗口"></a>3.1右键运行git，打开窗口</h3><p>命令：$ npm install -g hexo-cli</p>
+<h3 id="3-2、检验是否安装成功了"><a href="#3-2、检验是否安装成功了" class="headerlink" title="3.2、检验是否安装成功了"></a>3.2、检验是否安装成功了</h3><p>命令：hexo -v</p>
+<h2 id="4、NexT模板简介"><a href="#4、NexT模板简介" class="headerlink" title="4、NexT模板简介"></a>4、NexT模板简介</h2><p>NexT 拥有丰富而简单的配置,结合第三方服务,打造属于您自己的博客 主题配置 NexT 坚持将复杂的细节隐藏,提供尽量少并且简便的设置,保持最大限度的易用性。<br><a id="more"></a><br>&gt;<br>模板生成地址：<br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">访问地址</a></p>
+<h2 id="5、Hexo简介"><a href="#5、Hexo简介" class="headerlink" title="5、Hexo简介"></a>5、Hexo简介</h2><p>说明：NexT是基于Hexo的所以，还要去了解Hexo<br>Hexo介绍：<br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">访问地址</a></p>
+<p>使用：如果使用Hexo，还需要使用Node.js以及git</p>
+<h1 id="二、步骤"><a href="#二、步骤" class="headerlink" title="二、步骤:"></a>二、步骤:</h1><p><a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="external">参考文档</a></p>
+<p><a href="http://www.jianshu.com/p/b06222fbc135" target="_blank" rel="external">参考博客</a></p>
+<p>1、在计算机D盘创建一个MyBlog文件夹</p>
+<p>命令：</p>
+<h6 id="1-1-cd-d-MyBlog"><a href="#1-1-cd-d-MyBlog" class="headerlink" title="1.1 cd d:MyBlog"></a>1.1 cd d:MyBlog</h6><p>用途：找到这个文件夹</p>
+<h6 id="1-2、hexo-init"><a href="#1-2、hexo-init" class="headerlink" title="1.2、hexo init"></a>1.2、hexo init</h6><p>用户：在当前文件夹配置hexo<br>运行完命令稍等一下：<br>查看MyBlog文件夹会生成如下文件：</p>
+<p>3、hexo new “Hello”<br>通过命令创建一个Hello.md文件<br>运行完之后会提示：INFO  Created: E:\blog\source_posts\Hello.md<br>意思是：在当前文件夹下，创建了一个makedwon的文件</p>
+<p>4、打开文件:<br>   我们只需要在—的下面编写自己的博客内容就可以了。</p>
+<p>5、生成预览文件：<br>命令：hexo generate</p>
+<p>6、预览：<br>命令：hexo server<br>作用：开启本地的服务器<br>预览地址：<br><a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
+<p>6、配置信息;</p>
+<p>预览后发现：博客名，作者等信息都是hexo默认的。<br>找到_config.yml文件，在里面修改掉即可，当然，还可以根据hexo的配置文档去配置。</p>
+<h1 id="六、配置主题使用NEXT主题："><a href="#六、配置主题使用NEXT主题：" class="headerlink" title="六、配置主题使用NEXT主题："></a>六、配置主题使用NEXT主题：</h1><p>1、克隆next样式到站点文件夹<br>命令：<br>1、cd d:Mybolg<br>2、 git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next</a> themes/next<br>它会自动下载：</p>
+<p>验证：通过git下载之后，会有next文件夹出现</p>
+<p>2、启动主题：<br>1、找到Myblog最外层的文件夹，找到_config.yml文件<br>2、找到字段theme</p>
+<p>3、修改landscape为next</p>
+<p>4、验证主题：<br>到此，NexT 主题安装完成。下一步我们将验证主题是否正确启用。在切换主题之后、验证之前， 我们最好使用 hexo clean 来清除 Hexo 的缓存。</p>
+<p>清除hexo缓存:<br>命令：hexo clean</p>
+<p>5、验证结果：</p>
+<p>6、这个时候已经能看见默认的next的主题了</p>
+<p>7、切换next主题：</p>
+<p>1、外观样式：<br>找到next文件夹下的 .config.yml</p>
+<p>2、搜索scheme<br>可选参数:<br>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白<br>Mist - Muse 的紧凑版本，整洁有序的单栏外观<br>Pisces - 双栏 Scheme，小家碧玉似的清新</p>
+<p>8、设置语言：</p>
+<p>设置语言：在最外层的.config.yml中设置<br>language: zh-Hans</p>
+<p>9、设置菜单：<br>菜单是在主题下面的.config.yml中设置</p>
+<p>字段：menu<br>menu:<br>  home: /<br>  archives: /archives</p>
+<p>  #about: /about</p>
+<p>  #categories: /categories<br>  tags: /tags</p>
+<p>  #commonweal: /404.html</p>
+<p>上面的几项内容，需要直接放开就可以了。</p>
+<p>10、作者昵称<br>配置地点：最外层配置文件<br>字段：author </p>
+<p>11、设置链接;<br>配置位置：主题配置文件<br>字段：social</p>
+<p>12、设置头像</p>
+<h1 id="七、上传到github"><a href="#七、上传到github" class="headerlink" title="七、上传到github"></a>七、上传到github</h1><p>配置git账号：<br>git config –global user.name “yourname”<br>git config –global user.email “youremail”</p>
+<p>部署：找到最外层的.config.yml，配置如下参数<br><a href="http://www.tuicool.com/articles/aQriym3" target="_blank" rel="external">http://www.tuicool.com/articles/aQriym3</a><br>1   deploy:<br>2   type: git<br>3   repository: <a href="https://github.com/cnfanhua/cnfanhua.github.io.git" target="_blank" rel="external">https://github.com/cnfanhua/cnfanhua.github.io.git</a><br>4   branch: master</p>
+<p>报错：<br>Cannot find module ‘hexo-util’<br>解决:npm install hexo-util</p>
+<p>生成ssh：</p>
+<p>ssh-keygen -t rsa -C “xxxxxx.com”</p>
+<p>ssh://git@github.com/lijialalala/lijialalala.github.io.git<br><a href="https://github.com/lykf0713/lykf0713.github.io" target="_blank" rel="external">https://github.com/lykf0713/lykf0713.github.io</a></p>
+<p>生成ssh：<br>生成新的SSH Key：</p>
+<p>命令：$ ssh-keygen -t rsa -C “xxxx.com”</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/20/JPush/" rel="prev" title="极光推送快速集成">
+                极光推送快速集成 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="左文站" />
+          <p class="site-author-name" itemprop="name">左文站</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、用到软件，前提安装软件"><span class="nav-number">1.</span> <span class="nav-text">一、用到软件，前提安装软件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装Node-js软件，都是下一步"><span class="nav-number">1.1.</span> <span class="nav-text">1.安装Node.js软件，都是下一步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装git软件下载地址"><span class="nav-number">1.2.</span> <span class="nav-text">2.安装git软件下载地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装hexo"><span class="nav-number">1.3.</span> <span class="nav-text">3.安装hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1右键运行git，打开窗口"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1右键运行git，打开窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2、检验是否安装成功了"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2、检验是否安装成功了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、NexT模板简介"><span class="nav-number">1.4.</span> <span class="nav-text">4、NexT模板简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、Hexo简介"><span class="nav-number">1.5.</span> <span class="nav-text">5、Hexo简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、步骤"><span class="nav-number">2.</span> <span class="nav-text">二、步骤:</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-1-cd-d-MyBlog"><span class="nav-number">2.0.0.0.0.1.</span> <span class="nav-text">1.1 cd d:MyBlog</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-2、hexo-init"><span class="nav-number">2.0.0.0.0.2.</span> <span class="nav-text">1.2、hexo init</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、配置主题使用NEXT主题："><span class="nav-number">3.</span> <span class="nav-text">六、配置主题使用NEXT主题：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、上传到github"><span class="nav-number">4.</span> <span class="nav-text">七、上传到github</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左文站</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "68b7fd0c14974964bb8bc7dbe7a34d69",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("vL8PNDBtyegKd6KMTvEeN7M5-gzGzoHsz", "kxEWPUUrnHF20Kij9gSNh82o");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
