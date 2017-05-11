@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/19/搭建个人博客/index.html">
 <meta property="og:site_name" content="Android进阶之路--左文站">
 <meta property="og:description" content="一、用到软件，前提安装软件1.安装Node.js软件，都是下一步2.安装git软件下载地址3.安装hexo3.1右键运行git，打开窗口命令：$ npm install -g hexo-cli 3.2、检验是否安装成功了命令：hexo -v 4、NexT模板简介NexT 拥有丰富而简单的配置,结合第三方服务,打造属于您自己的博客 主题配置 NexT 坚持将复杂的细节隐藏,提供尽量少并且简便的设置,">
-<meta property="og:updated_time" content="2017-05-11T01:31:37.155Z">
+<meta property="og:updated_time" content="2017-05-11T03:19:28.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="教你怎么搭建个人博客">
 <meta name="twitter:description" content="一、用到软件，前提安装软件1.安装Node.js软件，都是下一步2.安装git软件下载地址3.安装hexo3.1右键运行git，打开窗口命令：$ npm install -g hexo-cli 3.2、检验是否安装成功了命令：hexo -v 4、NexT模板简介NexT 拥有丰富而简单的配置,结合第三方服务,打造属于您自己的博客 主题配置 NexT 坚持将复杂的细节隐藏,提供尽量少并且简便的设置,">
@@ -365,10 +365,10 @@
 <p>使用：如果使用Hexo，还需要使用Node.js以及git</p>
 <h1 id="二、步骤"><a href="#二、步骤" class="headerlink" title="二、步骤:"></a>二、步骤:</h1><p><a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="external">参考文档</a></p>
 <p><a href="http://www.jianshu.com/p/b06222fbc135" target="_blank" rel="external">参考博客</a></p>
-<p>1、在计算机D盘创建一个MyBlog文件夹</p>
+<p>1、在计算机任意盘创建一个MyBlog文件夹</p>
 <p>命令：</p>
 <h6 id="1-1-cd-d-MyBlog"><a href="#1-1-cd-d-MyBlog" class="headerlink" title="1.1 cd d:MyBlog"></a>1.1 cd d:MyBlog</h6><p>用途：找到这个文件夹</p>
-<h6 id="1-2、hexo-init"><a href="#1-2、hexo-init" class="headerlink" title="1.2、hexo init"></a>1.2、hexo init</h6><p>用户：在当前文件夹配置hexo<br>运行完命令稍等一下：<br>查看MyBlog文件夹会生成如下文件：</p>
+<h6 id="1-2、hexo-init"><a href="#1-2、hexo-init" class="headerlink" title="1.2、hexo init"></a>1.2、hexo init</h6><p>用户：在当前文件夹配置hexo<br>运行完命令稍等一下：<br>查看MyBlog文件夹会生成一些文件：</p>
 <p>3、hexo new “Hello”<br>通过命令创建一个Hello.md文件<br>运行完之后会提示：INFO  Created: E:\blog\source_posts\Hello.md<br>意思是：在当前文件夹下，创建了一个makedwon的文件</p>
 <p>4、打开文件:<br>   我们只需要在—的下面编写自己的博客内容就可以了。</p>
 <p>5、生成预览文件：<br>命令：hexo generate</p>
@@ -397,14 +397,12 @@
 <p>10、作者昵称<br>配置地点：最外层配置文件<br>字段：author </p>
 <p>11、设置链接;<br>配置位置：主题配置文件<br>字段：social</p>
 <p>12、设置头像</p>
-<h1 id="七、上传到github"><a href="#七、上传到github" class="headerlink" title="七、上传到github"></a>七、上传到github</h1><p>配置git账号：<br>git config –global user.name “yourname”<br>git config –global user.email “youremail”</p>
-<p>部署：找到最外层的.config.yml，配置如下参数<br><a href="http://www.tuicool.com/articles/aQriym3" target="_blank" rel="external">http://www.tuicool.com/articles/aQriym3</a><br>1   deploy:<br>2   type: git<br>3   repository: <a href="https://github.com/cnfanhua/cnfanhua.github.io.git" target="_blank" rel="external">https://github.com/cnfanhua/cnfanhua.github.io.git</a><br>4   branch: master</p>
+<h1 id="七、上传到github"><a href="#七、上传到github" class="headerlink" title="七、上传到github"></a>七、上传到github</h1><p>配置git账号：<br>git config –global user.name “yourname”<br>git config –global user.email “youremail”<br>github注册的邮箱</p>
+<p>部署：找到最外层的.config.yml，配置如下参数<br><a href="http://www.tuicool.com/articles/aQriym3" target="_blank" rel="external">http://www.tuicool.com/articles/aQriym3</a><br>1   deploy:<br>2   type: git<br>3   repository: <a href="https://github.com/cnfanhua/cnfanhua.github.io.git" target="_blank" rel="external">https://github.com/cnfanhua/cnfanhua.github.io.git</a></p>
 <p>报错：<br>Cannot find module ‘hexo-util’<br>解决:npm install hexo-util</p>
 <p>生成ssh：</p>
-<p>ssh-keygen -t rsa -C “xxxxxx.com”</p>
-<p>ssh://git@github.com/lijialalala/lijialalala.github.io.git<br><a href="https://github.com/lykf0713/lykf0713.github.io" target="_blank" rel="external">https://github.com/lykf0713/lykf0713.github.io</a></p>
-<p>生成ssh：<br>生成新的SSH Key：</p>
-<p>命令：$ ssh-keygen -t rsa -C “xxxx.com”</p>
+<p>ssh-keygen -t rsa -C “xxxxxx.com”<br>github注册邮箱</p>
+<p>生成文件id-ras,找到文件路径打开复制全部内容，到github的setting中添加key</p>
 
       
     </div>
