@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="####### 在之前的项目中使用svn版本控制工具，现在公司统一使用git,在刚接触git时，同事简单介绍了一下git命令行提交代码，顿时感觉云里雾里，感觉太麻烦了。于是开始了我的使用搜索之路，发现AS本身就可以git操作，顿时明朗起来。">
+<meta name="description" content="在之前的项目中使用svn版本控制工具，现在公司统一使用git,在刚接触git时，同事简单介绍了一下git命令行提交代码，顿时感觉云里雾里，感觉太麻烦了。于是开始了我的使用搜索之路，发现AS本身就可以git操作，顿时明朗起来。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AndroidStudio中git版本控制">
 <meta property="og:url" content="http://yoursite.com/2017/05/11/AndroidStudio中git版本控制/index.html">
 <meta property="og:site_name" content="Android进阶之路--左文站">
-<meta property="og:description" content="####### 在之前的项目中使用svn版本控制工具，现在公司统一使用git,在刚接触git时，同事简单介绍了一下git命令行提交代码，顿时感觉云里雾里，感觉太麻烦了。于是开始了我的使用搜索之路，发现AS本身就可以git操作，顿时明朗起来。">
+<meta property="og:description" content="在之前的项目中使用svn版本控制工具，现在公司统一使用git,在刚接触git时，同事简单介绍了一下git命令行提交代码，顿时感觉云里雾里，感觉太麻烦了。于是开始了我的使用搜索之路，发现AS本身就可以git操作，顿时明朗起来。">
 <meta property="og:image" content="http://yoursite.com/img/10.jpg">
 <meta property="og:image" content="http://yoursite.com/img/11.jpg">
-<meta property="og:updated_time" content="2017-05-11T05:34:32.602Z">
+<meta property="og:updated_time" content="2017-05-12T02:25:53.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AndroidStudio中git版本控制">
-<meta name="twitter:description" content="####### 在之前的项目中使用svn版本控制工具，现在公司统一使用git,在刚接触git时，同事简单介绍了一下git命令行提交代码，顿时感觉云里雾里，感觉太麻烦了。于是开始了我的使用搜索之路，发现AS本身就可以git操作，顿时明朗起来。">
+<meta name="twitter:description" content="在之前的项目中使用svn版本控制工具，现在公司统一使用git,在刚接触git时，同事简单介绍了一下git命令行提交代码，顿时感觉云里雾里，感觉太麻烦了。于是开始了我的使用搜索之路，发现AS本身就可以git操作，顿时明朗起来。">
 <meta name="twitter:image" content="http://yoursite.com/img/10.jpg">
 
 
@@ -360,7 +360,7 @@
       
 
       
-        <p>####### 在之前的项目中使用svn版本控制工具，现在公司统一使用git,在刚接触git时，同事简单介绍了一下git命令行提交代码，顿时感觉云里雾里，感觉太麻烦了。于是开始了我的使用搜索之路，发现AS本身就可以git操作，顿时明朗起来。</p>
+        <p> 在之前的项目中使用svn版本控制工具，现在公司统一使用git,在刚接触git时，同事简单介绍了一下git命令行提交代码，顿时感觉云里雾里，感觉太麻烦了。于是开始了我的使用搜索之路，发现AS本身就可以git操作，顿时明朗起来。</p>
 <a id="more"></a>
 <h3 id="1-在工程的-gitignore中添加忽略，不得不说和svn添加忽略一样一样的"><a href="#1-在工程的-gitignore中添加忽略，不得不说和svn添加忽略一样一样的" class="headerlink" title="1.在工程的.gitignore中添加忽略，不得不说和svn添加忽略一样一样的"></a>1.在工程的.gitignore中添加忽略，不得不说和svn添加忽略一样一样的</h3><p>   删除原来默认的添加一下代码</p>
 <pre><code> .gradle
@@ -370,7 +370,7 @@
 /local.properties
 </code></pre><h3 id="2-添加git客户端安装路径-如图："><a href="#2-添加git客户端安装路径-如图：" class="headerlink" title="2.添加git客户端安装路径 如图："></a>2.添加git客户端安装路径 如图：</h3><p><img src="/img/10.jpg" alt="安装路径图"></p>
 <h3 id="3-点击VCS—-gt-Enable-Version…-—-gt-选择Git—-gt-OK"><a href="#3-点击VCS—-gt-Enable-Version…-—-gt-选择Git—-gt-OK" class="headerlink" title="3.点击VCS—-&gt;Enable Version…..—&gt;选择Git—&gt;OK"></a>3.点击VCS—-&gt;Enable Version…..—&gt;选择Git—&gt;OK</h3><h3 id="4-点击VCS—-gt-Import-into…-–-gt-Share-prioject…-—-gt-取个名字，点击share-点击oK"><a href="#4-点击VCS—-gt-Import-into…-–-gt-Share-prioject…-—-gt-取个名字，点击share-点击oK" class="headerlink" title="4.点击VCS—-&gt;Import into…..–&gt;Share prioject….—&gt;取个名字，点击share,点击oK"></a>4.点击VCS—-&gt;Import into…..–&gt;Share prioject….—&gt;取个名字，点击share,点击oK</h3><h3 id="5-下面把鼠标放到左侧project任意文件上，然后Ctrl-A，选中所有文件，右键，git-gt-add-（全部变为绿色）"><a href="#5-下面把鼠标放到左侧project任意文件上，然后Ctrl-A，选中所有文件，右键，git-gt-add-（全部变为绿色）" class="headerlink" title="5.下面把鼠标放到左侧project任意文件上，然后Ctrl+A，选中所有文件，右键，git -&gt; add （全部变为绿色）"></a>5.下面把鼠标放到左侧project任意文件上，然后Ctrl+A，选中所有文件，右键，git -&gt; add （全部变为绿色）</h3><h3 id="6-点击导航栏VCS向上箭头commint提交，提交成功之后颜色变为正常"><a href="#6-点击导航栏VCS向上箭头commint提交，提交成功之后颜色变为正常" class="headerlink" title="6.点击导航栏VCS向上箭头commint提交，提交成功之后颜色变为正常"></a>6.点击导航栏VCS向上箭头commint提交，提交成功之后颜色变为正常</h3><h3 id="7-在左边导航栏任意位置右键GIt–-gt-Repository—-gt-push"><a href="#7-在左边导航栏任意位置右键GIt–-gt-Repository—-gt-push" class="headerlink" title="7.在左边导航栏任意位置右键GIt–&gt;Repository—&gt;push"></a>7.在左边导航栏任意位置右键GIt–&gt;Repository—&gt;push</h3><h3 id="8-输入提交URL-输入用户名和密码"><a href="#8-输入提交URL-输入用户名和密码" class="headerlink" title="8.输入提交URL,输入用户名和密码"></a>8.输入提交URL,输入用户名和密码</h3><h3 id="9-push-如图："><a href="#9-push-如图：" class="headerlink" title="9.push 如图："></a>9.push 如图：</h3><p><img src="/img/11.jpg" alt="安装路径图"></p>
-<h3 id="10-以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本"><a href="#10-以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本" class="headerlink" title="10.以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本"></a>10.以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本</h3>
+<h3 id="10-以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本"><a href="#10-以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本" class="headerlink" title="10.以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本"></a>10.以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本</h3><h3 id="AndroidStudio中git使用配置"><a href="#AndroidStudio中git使用配置" class="headerlink" title="AndroidStudio中git使用配置"></a><a href="http://www.jianshu.com/p/8d674d19a93c" target="_blank" rel="external">AndroidStudio中git使用配置</a></h3>
       
     </div>
 
@@ -527,7 +527,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-在工程的-gitignore中添加忽略，不得不说和svn添加忽略一样一样的"><span class="nav-number">1.</span> <span class="nav-text">1.在工程的.gitignore中添加忽略，不得不说和svn添加忽略一样一样的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-添加git客户端安装路径-如图："><span class="nav-number">2.</span> <span class="nav-text">2.添加git客户端安装路径 如图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-点击VCS—-gt-Enable-Version…-—-gt-选择Git—-gt-OK"><span class="nav-number">3.</span> <span class="nav-text">3.点击VCS—->Enable Version…..—>选择Git—>OK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-点击VCS—-gt-Import-into…-–-gt-Share-prioject…-—-gt-取个名字，点击share-点击oK"><span class="nav-number">4.</span> <span class="nav-text">4.点击VCS—->Import into…..–>Share prioject….—>取个名字，点击share,点击oK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-下面把鼠标放到左侧project任意文件上，然后Ctrl-A，选中所有文件，右键，git-gt-add-（全部变为绿色）"><span class="nav-number">5.</span> <span class="nav-text">5.下面把鼠标放到左侧project任意文件上，然后Ctrl+A，选中所有文件，右键，git -> add （全部变为绿色）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-点击导航栏VCS向上箭头commint提交，提交成功之后颜色变为正常"><span class="nav-number">6.</span> <span class="nav-text">6.点击导航栏VCS向上箭头commint提交，提交成功之后颜色变为正常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-在左边导航栏任意位置右键GIt–-gt-Repository—-gt-push"><span class="nav-number">7.</span> <span class="nav-text">7.在左边导航栏任意位置右键GIt–>Repository—>push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-输入提交URL-输入用户名和密码"><span class="nav-number">8.</span> <span class="nav-text">8.输入提交URL,输入用户名和密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-push-如图："><span class="nav-number">9.</span> <span class="nav-text">9.push 如图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本"><span class="nav-number">10.</span> <span class="nav-text">10.以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-在工程的-gitignore中添加忽略，不得不说和svn添加忽略一样一样的"><span class="nav-number">1.</span> <span class="nav-text">1.在工程的.gitignore中添加忽略，不得不说和svn添加忽略一样一样的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-添加git客户端安装路径-如图："><span class="nav-number">2.</span> <span class="nav-text">2.添加git客户端安装路径 如图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-点击VCS—-gt-Enable-Version…-—-gt-选择Git—-gt-OK"><span class="nav-number">3.</span> <span class="nav-text">3.点击VCS—->Enable Version…..—>选择Git—>OK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-点击VCS—-gt-Import-into…-–-gt-Share-prioject…-—-gt-取个名字，点击share-点击oK"><span class="nav-number">4.</span> <span class="nav-text">4.点击VCS—->Import into…..–>Share prioject….—>取个名字，点击share,点击oK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-下面把鼠标放到左侧project任意文件上，然后Ctrl-A，选中所有文件，右键，git-gt-add-（全部变为绿色）"><span class="nav-number">5.</span> <span class="nav-text">5.下面把鼠标放到左侧project任意文件上，然后Ctrl+A，选中所有文件，右键，git -> add （全部变为绿色）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-点击导航栏VCS向上箭头commint提交，提交成功之后颜色变为正常"><span class="nav-number">6.</span> <span class="nav-text">6.点击导航栏VCS向上箭头commint提交，提交成功之后颜色变为正常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-在左边导航栏任意位置右键GIt–-gt-Repository—-gt-push"><span class="nav-number">7.</span> <span class="nav-text">7.在左边导航栏任意位置右键GIt–>Repository—>push</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-输入提交URL-输入用户名和密码"><span class="nav-number">8.</span> <span class="nav-text">8.输入提交URL,输入用户名和密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-push-如图："><span class="nav-number">9.</span> <span class="nav-text">9.push 如图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本"><span class="nav-number">10.</span> <span class="nav-text">10.以后push和pull直接点导航栏上VCS就可以，这是成功创建了一个master版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AndroidStudio中git使用配置"><span class="nav-number">11.</span> <span class="nav-text">AndroidStudio中git使用配置</span></a></li></ol></div>
             
 
           </div>
