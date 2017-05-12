@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/12/热修复快速集成/index.html">
 <meta property="og:site_name" content="Android进阶之路--左文站">
 <meta property="og:description" content="很多时候测试完的产品上线后，突然发现一个小的bug。这时候考虑到用户体验、和时间成本，不能为了一点点bug而重新发布新版本。于是就有了热修复这个概念的产生！它可以在不发布版本的情况下修复出bug的代码。下面集成腾讯Bugly Android热更新使用">
-<meta property="og:updated_time" content="2017-05-12T06:27:19.654Z">
+<meta property="og:updated_time" content="2017-05-12T09:17:38.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="热修复快速集成">
 <meta name="twitter:description" content="很多时候测试完的产品上线后，突然发现一个小的bug。这时候考虑到用户体验、和时间成本，不能为了一点点bug而重新发布新版本。于是就有了热修复这个概念的产生！它可以在不发布版本的情况下修复出bug的代码。下面集成腾讯Bugly Android热更新使用">
@@ -473,6 +473,30 @@ buildConfig {
     //applyResourceMapping = &quot;${bakPath}/${appName}/app-release-R.txt&quot; // 可选，设置R.txt文件，通过旧apk文件保持ResId的分配
 }
 }
+</code></pre><h3 id="第五步：APPlication配置"><a href="#第五步：APPlication配置" class="headerlink" title="第五步：APPlication配置"></a>第五步：APPlication配置</h3><pre><code>enableProxyApplication = true 的情况
+
+public class MyApplication extends Application {
+
+@Override
+public void onCreate() {
+    super.onCreate();
+    // 这里实现SDK初始化，appId替换成你的在Bugly平台申请的appId
+    // 调试时，将第三个参数改为true
+    Bugly.init(this, &quot;900029763&quot;, false);
+}
+
+@Override
+protected void attachBaseContext(Context base) {
+    super.attachBaseContext(base);
+    // you must install multiDex whatever tinker is installed!
+    MultiDex.install(base);
+
+
+    // 安装tinker
+    Beta.installTinker();
+}
+
+}
 </code></pre><h3 id="第五步：初始化SDK"><a href="#第五步：初始化SDK" class="headerlink" title="第五步：初始化SDK"></a>第五步：初始化SDK</h3><p>AndroidManifest.xml配置</p>
 <pre><code>&lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;
 &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
@@ -638,7 +662,7 @@ buildConfig {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步：添加插件依赖"><span class="nav-number">1.</span> <span class="nav-text">第一步：添加插件依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步：集成SDK"><span class="nav-number">2.</span> <span class="nav-text">第二步：集成SDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三步：在app-module的“build-gradle”文件中添加："><span class="nav-number">3.</span> <span class="nav-text">第三步：在app module的“build.gradle”文件中添加：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四步：-您需要在同级目录下创建tinker-support-gradle这个文件"><span class="nav-number">4.</span> <span class="nav-text">第四步： 您需要在同级目录下创建tinker-support.gradle这个文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五步：初始化SDK"><span class="nav-number">5.</span> <span class="nav-text">第五步：初始化SDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#热更新文档"><span class="nav-number">5.1.</span> <span class="nav-text">热更新文档</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步：添加插件依赖"><span class="nav-number">1.</span> <span class="nav-text">第一步：添加插件依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步：集成SDK"><span class="nav-number">2.</span> <span class="nav-text">第二步：集成SDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三步：在app-module的“build-gradle”文件中添加："><span class="nav-number">3.</span> <span class="nav-text">第三步：在app module的“build.gradle”文件中添加：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四步：-您需要在同级目录下创建tinker-support-gradle这个文件"><span class="nav-number">4.</span> <span class="nav-text">第四步： 您需要在同级目录下创建tinker-support.gradle这个文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五步：APPlication配置"><span class="nav-number">5.</span> <span class="nav-text">第五步：APPlication配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五步：初始化SDK"><span class="nav-number">6.</span> <span class="nav-text">第五步：初始化SDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#热更新文档"><span class="nav-number">6.1.</span> <span class="nav-text">热更新文档</span></a></li></ol></li></ol></div>
             
 
           </div>
