@@ -90,13 +90,18 @@
 
 
 
+<meta name="description" content="上一篇讲到腾讯的热修复集成技术，这篇我们来探究一下阿里的热修复技术，他们还是有一定的区别的。对我们解决线上Bug提供了方法。下面我们就来探究一下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AndFi">
+<meta property="og:title" content="阿里热修复技术">
 <meta property="og:url" content="http://yoursite.com/2017/05/24/AndFi/index.html">
 <meta property="og:site_name" content="Android进阶之路--左文站">
-<meta property="og:updated_time" content="2017-05-24T02:09:16.674Z">
+<meta property="og:description" content="上一篇讲到腾讯的热修复集成技术，这篇我们来探究一下阿里的热修复技术，他们还是有一定的区别的。对我们解决线上Bug提供了方法。下面我们就来探究一下">
+<meta property="og:image" content="http://yoursite.com/img/fix.jpg">
+<meta property="og:updated_time" content="2017-05-24T03:54:37.014Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AndFi">
+<meta name="twitter:title" content="阿里热修复技术">
+<meta name="twitter:description" content="上一篇讲到腾讯的热修复集成技术，这篇我们来探究一下阿里的热修复技术，他们还是有一定的区别的。对我们解决线上Bug提供了方法。下面我们就来探究一下">
+<meta name="twitter:image" content="http://yoursite.com/img/fix.jpg">
 
 
 
@@ -130,7 +135,7 @@
 
 
 
-  <title>AndFi | Android进阶之路--左文站</title>
+  <title>阿里热修复技术 | Android进阶之路--左文站</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">AndFi</h1>
+          <h1 class="post-title" itemprop="name headline">阿里热修复技术</h1>
         
 
         <div class="post-meta">
@@ -326,7 +331,7 @@
 
           
           
-             <span id="/2017/05/24/AndFi/" class="leancloud_visitors" data-flag-title="AndFi">
+             <span id="/2017/05/24/AndFi/" class="leancloud_visitors" data-flag-title="阿里热修复技术">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -354,7 +359,84 @@
       
 
       
-        
+        <h6 id="上一篇讲到腾讯的热修复集成技术，这篇我们来探究一下阿里的热修复技术，他们还是有一定的区别的。对我们解决线上Bug提供了方法。下面我们就来探究一下"><a href="#上一篇讲到腾讯的热修复集成技术，这篇我们来探究一下阿里的热修复技术，他们还是有一定的区别的。对我们解决线上Bug提供了方法。下面我们就来探究一下" class="headerlink" title="上一篇讲到腾讯的热修复集成技术，这篇我们来探究一下阿里的热修复技术，他们还是有一定的区别的。对我们解决线上Bug提供了方法。下面我们就来探究一下"></a>上一篇讲到腾讯的热修复集成技术，这篇我们来探究一下阿里的热修复技术，他们还是有一定的区别的。对我们解决线上Bug提供了方法。下面我们就来探究一下</h6><a id="more"></a>
+<h4 id="Github地址"><a href="#Github地址" class="headerlink" title="Github地址"></a><a href="https://github.com/alibaba/AndFix" target="_blank" rel="external">Github地址</a></h4><h2 id="一、集成测试"><a href="#一、集成测试" class="headerlink" title="一、集成测试"></a>一、集成测试</h2><h3 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1.添加依赖"></a>1.添加依赖</h3><pre><code>compile &apos;com.alipay.euler:andfix:0.5.0@aar&apos;
+</code></pre><h3 id="2-自定义Application中添加"><a href="#2-自定义Application中添加" class="headerlink" title="2.自定义Application中添加"></a>2.自定义Application中添加</h3><pre><code>// Patch管理类
+public static PatchManager mPatchManager;
+
+@Override
+public void onCreate() {
+    super.onCreate();
+
+
+    // Ali热修复
+    try {
+        mPatchManager = new PatchManager(this);
+        // 初始化patch版本
+        String pkName = this.getPackageName();
+        String versionName = getPackageManager().getPackageInfo(pkName, 0).versionName;
+        // 初始化版本名称
+        mPatchManager.init(versionName);
+        // 加载之前的patch
+        mPatchManager.loadPatch();
+    } catch (PackageManager.NameNotFoundException e) {
+        e.printStackTrace();
+    }
+
+}
+</code></pre><h3 id="3-将有bug的apk和没有问题的apk（签名之后）-及签名文件放进tools文件夹，命令行进入改文件夹，执行一下命令"><a href="#3-将有bug的apk和没有问题的apk（签名之后）-及签名文件放进tools文件夹，命令行进入改文件夹，执行一下命令" class="headerlink" title="3.将有bug的apk和没有问题的apk（签名之后）,及签名文件放进tools文件夹，命令行进入改文件夹，执行一下命令"></a>3.将有bug的apk和没有问题的apk（签名之后）,及签名文件放进tools文件夹，命令行进入改文件夹，执行一下命令</h3><pre><code>命令是：apkpatch.bat -f &lt;new&gt; -t &lt;old&gt; -o &lt;output&gt; -k &lt;keystore&gt; -p &lt;*&gt; -a &lt;alias&gt; -e &lt;*&gt;
+
+ -f : 没有Bug的新版本apk
+ -t : 有bug的旧版本apk
+ -o : 生成的补丁文件所放的文件夹
+ -k : 签名打包密钥
+ -p : 签名打包密钥密码
+ -a : 签名密钥别名
+ -e : 签名别名密码（这样一般和密钥密码一致）
+</code></pre><h3 id="4-进入调用方法修复"><a href="#4-进入调用方法修复" class="headerlink" title="4.进入调用方法修复"></a>4.进入调用方法修复</h3><pre><code>MyApplication.mPatchManager.addPatch(patchFileString);
+</code></pre><p>   测试：</p>
+<pre><code>    try {
+        // 测试 目前暂且放在本地
+        String patchFileString =  Environment.getExternalStorageDirectory()+&quot;/fix.apatch&quot;;
+        Log.e(&quot;TAG&quot;, patchFileString);
+        // 修复apatch，不需要重启可立即生效
+        BaseApplication.mPatchManager.addPatch(patchFileString);
+        Toast.makeText(this, &quot;Bug修复成功&quot;, Toast.LENGTH_LONG).show();
+    } catch (Exception e) {
+        e.printStackTrace();
+        Toast.makeText(this, &quot;Bug修复失败&quot;, Toast.LENGTH_LONG).show();
+    }
+}
+</code></pre><h2 id="二、源码分析"><a href="#二、源码分析" class="headerlink" title="二、源码分析"></a>二、源码分析</h2><h3 id="1-将差分包变为zip文件，解压补丁包文件可以看到改变地方的注解标识"><a href="#1-将差分包变为zip文件，解压补丁包文件可以看到改变地方的注解标识" class="headerlink" title="1.将差分包变为zip文件，解压补丁包文件可以看到改变地方的注解标识"></a>1.将差分包变为zip文件，解压补丁包文件可以看到改变地方的注解标识</h3><p><img src="/img/fix.jpg" alt="截图"></p>
+<h3 id="2-修复方法"><a href="#2-修复方法" class="headerlink" title="2.修复方法"></a>2.修复方法</h3><pre><code>static void replaceMethod(JNIEnv* env, jclass clazz, jobject src,
+jobject dest) {
+if (isArt) {
+art_replaceMethod(env, src, dest); 
+} else {
+    dalvik_replaceMethod(env, src, dest);
+}}
+</code></pre><h3 id="3-4-4版本以后-isArt-art架构-4-4版本前期dalvik架构"><a href="#3-4-4版本以后-isArt-art架构-4-4版本前期dalvik架构" class="headerlink" title="3. 4.4版本以后 isArt art架构   4.4版本前期dalvik架构"></a>3. 4.4版本以后 isArt art架构   4.4版本前期dalvik架构</h3><pre><code>extern void __attribute__ ((visibility (&quot;hidden&quot;))) dalvik_replaceMethod(
+    JNIEnv* env, jobject src, jobject dest) {
+         jobject clazz = env-&gt;CallObjectMethod(dest, jClassMethod);
+           ClassObject* clz = (ClassObject*) dvmDecodeIndirectRef_fnPtr(
+        dvmThreadSelf_fnPtr(), clazz);
+        clz-&gt;status = CLASS_INITIALIZED;
+          Method* meth = (Method*) env-&gt;FromReflectedMethod(src);
+    Method* target = (Method*) env-&gt;FromReflectedMethod(dest);
+    LOGD(&quot;dalvikMethod: %s&quot;, meth-&gt;name);
+    //    meth-&gt;clazz = target-&gt;clazz;
+   meth-&gt;accessFlags |= ACC_PUBLIC;
+   meth-&gt;methodIndex = target-&gt;methodIndex;
+   meth-&gt;jniArgInfo = target-&gt;jniArgInfo;
+   meth-&gt;registersSize = target-&gt;registersSize;
+   meth-&gt;outsSize = target-&gt;outsSize;
+   meth-&gt;insSize = target-&gt;insSize;
+   meth-&gt;prototype = target-&gt;prototype;
+   meth-&gt;insns = target-&gt;insns;
+  // 错误的方法指向正确的方法
+  meth-&gt;nativeFunc = target-&gt;nativeFunc;
+  }
+</code></pre>
       
     </div>
 
@@ -447,8 +529,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -492,6 +583,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#上一篇讲到腾讯的热修复集成技术，这篇我们来探究一下阿里的热修复技术，他们还是有一定的区别的。对我们解决线上Bug提供了方法。下面我们就来探究一下"><span class="nav-number">1.</span> <span class="nav-text">上一篇讲到腾讯的热修复集成技术，这篇我们来探究一下阿里的热修复技术，他们还是有一定的区别的。对我们解决线上Bug提供了方法。下面我们就来探究一下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Github地址"><span class="nav-number"></span> <span class="nav-text">Github地址</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、集成测试"><span class="nav-number"></span> <span class="nav-text">一、集成测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-添加依赖"><span class="nav-number"></span> <span class="nav-text">1.添加依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-自定义Application中添加"><span class="nav-number"></span> <span class="nav-text">2.自定义Application中添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-将有bug的apk和没有问题的apk（签名之后）-及签名文件放进tools文件夹，命令行进入改文件夹，执行一下命令"><span class="nav-number"></span> <span class="nav-text">3.将有bug的apk和没有问题的apk（签名之后）,及签名文件放进tools文件夹，命令行进入改文件夹，执行一下命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-进入调用方法修复"><span class="nav-number"></span> <span class="nav-text">4.进入调用方法修复</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、源码分析"><span class="nav-number"></span> <span class="nav-text">二、源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-将差分包变为zip文件，解压补丁包文件可以看到改变地方的注解标识"><span class="nav-number"></span> <span class="nav-text">1.将差分包变为zip文件，解压补丁包文件可以看到改变地方的注解标识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-修复方法"><span class="nav-number"></span> <span class="nav-text">2.修复方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-4版本以后-isArt-art架构-4-4版本前期dalvik架构"><span class="nav-number"></span> <span class="nav-text">3. 4.4版本以后 isArt art架构   4.4版本前期dalvik架构</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
