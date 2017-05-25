@@ -270,6 +270,150 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/万能Dialog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左文站">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Android进阶之路--左文站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/24/万能Dialog/" itemprop="url">Builder模式设计一款万能的Dialog</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-24T13:35:15+08:00">
+                2017-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/24/万能Dialog/" class="leancloud_visitors" data-flag-title="Builder模式设计一款万能的Dialog">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h6 id="在项目中都会遇到各种弹出框样式，今天我们就自己来自定义一个可以扩展的Dialog"><a href="#在项目中都会遇到各种弹出框样式，今天我们就自己来自定义一个可以扩展的Dialog" class="headerlink" title="在项目中都会遇到各种弹出框样式，今天我们就自己来自定义一个可以扩展的Dialog"></a>在项目中都会遇到各种弹出框样式，今天我们就自己来自定义一个可以扩展的Dialog</h6><h2 id="从源码走起"><a href="#从源码走起" class="headerlink" title="从源码走起"></a>从源码走起</h2><h4 id="系统自带使用"><a href="#系统自带使用" class="headerlink" title="系统自带使用"></a>系统自带使用</h4><pre><code>AlertDialog.Builder builder = new AlertDialog.Builder(context);  
+   builder.setIcon(R.drawable.icon);  
+   builder.setTitle(&quot;头部&quot;);  
+   builder.setMessage(&quot;内容&quot;);  
+   builder.setPositiveButton(&quot;Button1&quot;,  
+           new DialogInterface.OnClickListener() {  
+               public void onClick(DialogInterface dialog, int whichButton) {  
+                   setTitle(&quot;点击了对话框上的Button1&quot;);  
+               }  
+           })
+           .setNeutralButton(&quot;Button2&quot;,  
+           new DialogInterface.OnClickListener() {  
+               public void onClick(DialogInterface dialog, int whichButton) {  
+                   setTitle(&quot;点击了对话框上的Button2&quot;);  
+               }  
+           });  
+   builder.create().show();  // 构建AlertDialog， 并且显示
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/24/万能Dialog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/AndFi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1419,134 +1563,6 @@ compile &apos;com.squareup.retrofit2:adapter-rxjava:2.1.0&apos;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/持久化Cookie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="左文站">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Android进阶之路--左文站">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/04/持久化Cookie/" itemprop="url">Retrofit+OKHttp 教你怎么持久化管理Cookie</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-04T17:37:40+08:00">
-                2017-05-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/05/04/持久化Cookie/" class="leancloud_visitors" data-flag-title="Retrofit+OKHttp 教你怎么持久化管理Cookie">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/img/3.jpg" alt="开心一刻"></p>
-<h2 id="1-实现步骤"><a href="#1-实现步骤" class="headerlink" title="1.实现步骤"></a>1.实现步骤</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/04/持久化Cookie/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1596,7 +1612,7 @@ compile &apos;com.squareup.retrofit2:adapter-rxjava:2.1.0&apos;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
