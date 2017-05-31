@@ -90,18 +90,16 @@
 
 
 
-<meta name="description" content="一、友盟多渠道打包1.在AndroidManifest.xml中添加&amp;lt;meta-data     android:name=&amp;quot;UMENG_CHANNEL&amp;quot;     android:value=&amp;quot;${UMENG_CHANNEL_VALUE}&amp;quot; /&amp;gt;">
+<meta name="description" content="一、简介1.增量更新的流程是：用户手机上安装着某个应用，下载了增量包，手机上的apk和增量包合并形成新的包，然后再次安装。2.关键技术点#########  2.1用户手机上提取当前安装应用的apk #########  2.2如何利用old.apk和new.apk生成增量文件 #########  2.3增加文件与1.中的old.apk合并，然后安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多渠道打包">
-<meta property="og:url" content="http://yoursite.com/2017/04/28/多渠道打包/index.html">
+<meta property="og:title" content="增量更新小结">
+<meta property="og:url" content="http://yoursite.com/2017/05/31/增量更新/index.html">
 <meta property="og:site_name" content="Android进阶之路--左文站">
-<meta property="og:description" content="一、友盟多渠道打包1.在AndroidManifest.xml中添加&amp;lt;meta-data     android:name=&amp;quot;UMENG_CHANNEL&amp;quot;     android:value=&amp;quot;${UMENG_CHANNEL_VALUE}&amp;quot; /&amp;gt;">
-<meta property="og:image" content="http://yoursite.com/img/2.jpg">
-<meta property="og:updated_time" content="2017-05-10T06:06:21.491Z">
+<meta property="og:description" content="一、简介1.增量更新的流程是：用户手机上安装着某个应用，下载了增量包，手机上的apk和增量包合并形成新的包，然后再次安装。2.关键技术点#########  2.1用户手机上提取当前安装应用的apk #########  2.2如何利用old.apk和new.apk生成增量文件 #########  2.3增加文件与1.中的old.apk合并，然后安装">
+<meta property="og:updated_time" content="2017-05-31T08:51:21.096Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多渠道打包">
-<meta name="twitter:description" content="一、友盟多渠道打包1.在AndroidManifest.xml中添加&amp;lt;meta-data     android:name=&amp;quot;UMENG_CHANNEL&amp;quot;     android:value=&amp;quot;${UMENG_CHANNEL_VALUE}&amp;quot; /&amp;gt;">
-<meta name="twitter:image" content="http://yoursite.com/img/2.jpg">
+<meta name="twitter:title" content="增量更新小结">
+<meta name="twitter:description" content="一、简介1.增量更新的流程是：用户手机上安装着某个应用，下载了增量包，手机上的apk和增量包合并形成新的包，然后再次安装。2.关键技术点#########  2.1用户手机上提取当前安装应用的apk #########  2.2如何利用old.apk和new.apk生成增量文件 #########  2.3增加文件与1.中的old.apk合并，然后安装">
 
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/28/多渠道打包/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/31/增量更新/"/>
 
 
 
 
 
-  <title>多渠道打包 | Android进阶之路--左文站</title>
+  <title>增量更新小结 | Android进阶之路--左文站</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +272,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/28/多渠道打包/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/31/增量更新/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="左文站">
@@ -291,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">多渠道打包</h1>
+          <h1 class="post-title" itemprop="name headline">增量更新小结</h1>
         
 
         <div class="post-meta">
@@ -303,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-28T16:40:17+08:00">
-                2017-04-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T16:18:40+08:00">
+                2017-05-31
               </time>
             
 
@@ -322,7 +320,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/04/28/多渠道打包/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/05/31/增量更新/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -331,7 +329,7 @@
 
           
           
-             <span id="/2017/04/28/多渠道打包/" class="leancloud_visitors" data-flag-title="多渠道打包">
+             <span id="/2017/05/31/增量更新/" class="leancloud_visitors" data-flag-title="增量更新小结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -359,41 +357,61 @@
       
 
       
-        <p><img src="/img/2.jpg" alt="开心一刻"></p>
-<h2 id="一、友盟多渠道打包"><a href="#一、友盟多渠道打包" class="headerlink" title="一、友盟多渠道打包"></a>一、友盟多渠道打包</h2><h4 id="1-在AndroidManifest-xml中添加"><a href="#1-在AndroidManifest-xml中添加" class="headerlink" title="1.在AndroidManifest.xml中添加"></a>1.在AndroidManifest.xml中添加</h4><pre><code>&lt;meta-data
-    android:name=&quot;UMENG_CHANNEL&quot;
-    android:value=&quot;${UMENG_CHANNEL_VALUE}&quot; /&gt;
-</code></pre><a id="more"></a>
-<h4 id="2-在项目build-gradle文件的android-添加"><a href="#2-在项目build-gradle文件的android-添加" class="headerlink" title="2.在项目build.gradle文件的android {}添加"></a>2.在项目build.gradle文件的android {}添加</h4><pre><code>   productFlavors{
-wandoujia{
-//manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;wandoujia&quot;]
+        <h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><h6 id="1-增量更新的流程是：用户手机上安装着某个应用，下载了增量包，手机上的apk和增量包合并形成新的包，然后再次安装。"><a href="#1-增量更新的流程是：用户手机上安装着某个应用，下载了增量包，手机上的apk和增量包合并形成新的包，然后再次安装。" class="headerlink" title="1.增量更新的流程是：用户手机上安装着某个应用，下载了增量包，手机上的apk和增量包合并形成新的包，然后再次安装。"></a>1.增量更新的流程是：用户手机上安装着某个应用，下载了增量包，手机上的apk和增量包合并形成新的包，然后再次安装。</h6><h6 id="2-关键技术点"><a href="#2-关键技术点" class="headerlink" title="2.关键技术点"></a>2.关键技术点</h6><p>#########  2.1用户手机上提取当前安装应用的apk</p>
+<p>#########  2.2如何利用old.apk和new.apk生成增量文件</p>
+<p>#########  2.3增加文件与1.中的old.apk合并，然后安装<br><a id="more"></a></p>
+<h3 id="二、客户端的行为"><a href="#二、客户端的行为" class="headerlink" title="二、客户端的行为"></a>二、客户端的行为</h3><h5 id="1-写java的native方法"><a href="#1-写java的native方法" class="headerlink" title="1.写java的native方法"></a>1.写java的native方法</h5><pre><code>public class PatchUtil {
+
+/**
+ *
+ * @param oldApkPath 原来的apk
+ * @param newApkPath 合并后新的apk路经
+ * @param PatchPath  差分包路径:从服务器上下载
+ */
+public static native void combine(String oldApkPath,String newApkPath,String PatchPath);
+ }
+</code></pre><h5 id="2-生成头文件"><a href="#2-生成头文件" class="headerlink" title="2.生成头文件"></a>2.生成头文件</h5><p>######## 2.1 Rebulid一下生成.class文件</p>
+<p>######## 2.2用命令行命令进入debug目录，执行javah命令生成头文件</p>
+<p>######## 2.2创建jni文件夹，将头文件复制进来</p>
+<h5 id="3-下载第三方工具"><a href="#3-下载第三方工具" class="headerlink" title="3.下载第三方工具"></a>3.下载第三方工具</h5><p>####### 3.1<a href="http://www.daemonology.net/bsdiff/bsdiff-4.3.tar.gz" target="_blank" rel="external">bsdiff</a><br>解压复制bspatch.c文件到jni目录</p>
+<p>####### 3.2<a href="http://124.205.69.165/files/41050000041DD0D1/www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz" target="_blank" rel="external">bzip</a><br>解压复制.c和.h文件到jni目录</p>
+<h5 id="4-配置环境"><a href="#4-配置环境" class="headerlink" title="4.配置环境"></a>4.配置环境</h5><p>####### 1.在module的build.gradle下面添加生成so库</p>
+<p>####### 2.gradle.properties文件添加支持ndk</p>
+<h5 id="5-bspatch-c文件引入"><a href="#5-bspatch-c文件引入" class="headerlink" title="5.bspatch.c文件引入"></a>5.bspatch.c文件引入</h5><pre><code>include &quot;bzlib.c&quot;
+include &quot;crctable.c&quot;
+include &quot;compress.c&quot;
+include &quot;decompress.c&quot;
+include &quot;randtable.c&quot;
+include &quot;blocksort.c&quot;
+include &quot;huffman.c&quot;
+</code></pre><h5 id="6-在bspatch文件引入头文件，调用相应方法"><a href="#6-在bspatch文件引入头文件，调用相应方法" class="headerlink" title="6.在bspatch文件引入头文件，调用相应方法"></a>6.在bspatch文件引入头文件，调用相应方法</h5><pre><code>     include &quot;com_darren_util_PatchUtils.h&quot;
+
+      // 合并差分包
+ JNIEXPORT void JNICALL Java_com_darren_util_PatchUtils_combine
+(JNIEnv *env, jclass jclz, jstring old_apk_path, jstring new_apk_path, jstring patch_path){
+// 固定参数 4
+int argc = 4;
+// 转换 jstring -&gt; char*
+char* old_apk_cstr = (char*)(*env)-&gt;GetStringUTFChars(env,old_apk_path,NULL);
+char* new_apk_cstr = (char*)(*env)-&gt;GetStringUTFChars(env,new_apk_path,NULL);
+char* patch_path_cstr = (char*)(*env)-&gt;GetStringUTFChars(env,patch_path,NULL);
+// 赋值
+char * argv[4];
+argv[0] = &quot;combine&quot;;
+argv[1] = old_apk_cstr;
+argv[2] = new_apk_cstr;
+argv[3] = patch_path_cstr;
+
+// 调用合并方法
+patch(argc,argv);
+
+// 释放资源
+(*env)-&gt;ReleaseStringUTFChars(env,old_apk_path,old_apk_cstr);
+(*env)-&gt;ReleaseStringUTFChars(env,new_apk_path,new_apk_cstr);
+(*env)-&gt;ReleaseStringUTFChars(env,patch_path,patch_path_cstr);
 }
-xiaomi{
-//manifestPlaceholders=[UMENG_CHANNEL_VALUE: &quot;xiaomi&quot;]
-}
-}
-productFlavors.all { flavor -&gt;
-flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
-}
-applicationVariants.all { variant -&gt;
-variant.outputs.each { output -&gt;
-def outputFile = output.outputFile
-if (outputFile != null &amp;&amp; outputFile.name.endsWith(&apos;.apk&apos;)) {
-def fileName = outputFile.name.replace(&quot;.apk&quot;, &quot;-${defaultConfig.versionName}.apk&quot;)
-output.outputFile = new File(outputFile.parent, fileName)
-}
-}
-}
-</code></pre><h4 id="3-获取渠道名"><a href="#3-获取渠道名" class="headerlink" title="3.获取渠道名"></a>3.获取渠道名</h4><pre><code>  private String getChannel() {
-try {
-PackageManager pm = getPackageManager();
-   return appInfo.metaData.getString(&quot;UMENG_CHANNEL&quot;);
-} catch (PackageManager.NameNotFoundException ignored) {
-}
-   ApplicationInfo appInfo = pm.getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-  return &quot;&quot;;
-}
-</code></pre><h4 id="4-正常打包时选择添加的所有渠道"><a href="#4-正常打包时选择添加的所有渠道" class="headerlink" title="4.正常打包时选择添加的所有渠道"></a>4.正常打包时选择添加的所有渠道</h4><h5 id="缺点：渠道包多时速度有点慢二三十个还行"><a href="#缺点：渠道包多时速度有点慢二三十个还行" class="headerlink" title="缺点：渠道包多时速度有点慢二三十个还行"></a>缺点：渠道包多时速度有点慢二三十个还行</h5><h2 id="二、其他的打包工具"><a href="#二、其他的打包工具" class="headerlink" title="二、其他的打包工具"></a>二、其他的打包工具</h2><h4 id="1-美团"><a href="#1-美团" class="headerlink" title="1.美团"></a>1.美团</h4><h4 id="2-360"><a href="#2-360" class="headerlink" title="2.360"></a>2.360</h4>
+</code></pre><h5 id="7-编辑下载安装差分包"><a href="#7-编辑下载安装差分包" class="headerlink" title="7.编辑下载安装差分包"></a>7.编辑下载安装差分包</h5><h3 id="三、服务端"><a href="#三、服务端" class="headerlink" title="三、服务端"></a>三、服务端</h3><p>####### 使用<a href="https://github.com/curasystems/bsdiff-win" target="_blank" rel="external">bsdiff-win</a>和VS生成差分包</p>
+
       
     </div>
 
@@ -429,8 +447,8 @@ PackageManager pm = getPackageManager();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/24/RxJava/" rel="next" title="RxJava">
-                <i class="fa fa-chevron-left"></i> RxJava
+              <a href="/2017/05/26/小程序02/" rel="next" title="小程序讲解（二）">
+                <i class="fa fa-chevron-left"></i> 小程序讲解（二）
               </a>
             
           </div>
@@ -438,10 +456,6 @@ PackageManager pm = getPackageManager();
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/04/Retrofit2/" rel="prev" title="Retrofit2完全教程（一）">
-                Retrofit2完全教程（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,7 +568,7 @@ PackageManager pm = getPackageManager();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、友盟多渠道打包"><span class="nav-number">1.</span> <span class="nav-text">一、友盟多渠道打包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-在AndroidManifest-xml中添加"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.在AndroidManifest.xml中添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-在项目build-gradle文件的android-添加"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.在项目build.gradle文件的android {}添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-获取渠道名"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.获取渠道名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-正常打包时选择添加的所有渠道"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.正常打包时选择添加的所有渠道</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#缺点：渠道包多时速度有点慢二三十个还行"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">缺点：渠道包多时速度有点慢二三十个还行</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、其他的打包工具"><span class="nav-number">2.</span> <span class="nav-text">二、其他的打包工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-美团"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.美团</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-360"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.360</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、简介"><span class="nav-number">1.</span> <span class="nav-text">一、简介</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-增量更新的流程是：用户手机上安装着某个应用，下载了增量包，手机上的apk和增量包合并形成新的包，然后再次安装。"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.增量更新的流程是：用户手机上安装着某个应用，下载了增量包，手机上的apk和增量包合并形成新的包，然后再次安装。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-关键技术点"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2.关键技术点</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、客户端的行为"><span class="nav-number">2.</span> <span class="nav-text">二、客户端的行为</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-写java的native方法"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.写java的native方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-生成头文件"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.生成头文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-下载第三方工具"><span class="nav-number">2.0.3.</span> <span class="nav-text">3.下载第三方工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-配置环境"><span class="nav-number">2.0.4.</span> <span class="nav-text">4.配置环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-bspatch-c文件引入"><span class="nav-number">2.0.5.</span> <span class="nav-text">5.bspatch.c文件引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-在bspatch文件引入头文件，调用相应方法"><span class="nav-number">2.0.6.</span> <span class="nav-text">6.在bspatch文件引入头文件，调用相应方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-编辑下载安装差分包"><span class="nav-number">2.0.7.</span> <span class="nav-text">7.编辑下载安装差分包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、服务端"><span class="nav-number">3.</span> <span class="nav-text">三、服务端</span></a></li></ol></div>
             
 
           </div>
