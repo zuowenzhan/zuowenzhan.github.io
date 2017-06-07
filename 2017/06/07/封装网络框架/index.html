@@ -1,0 +1,1142 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="约定响应数据格式####### 通常来说，你拿到的设计文档中会存在通信协议的说明，对于客户端来说，一个良好的通信协议需要能描述操作状态（操作码+操作提示）以操作结果，因此，常见的响应数据的格式如下： {  &amp;quot;code&amp;quot;: 0,  &amp;quot;msg&amp;quot;: &amp;quot;正常&amp;quot;,  &amp;quot;data&amp;quot;: { &amp;quot;id&amp;quot;: 1, &amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retrofit封装使用">
+<meta property="og:url" content="http://yoursite.com/2017/06/07/封装网络框架/index.html">
+<meta property="og:site_name" content="Android进阶之路--左文站">
+<meta property="og:description" content="约定响应数据格式####### 通常来说，你拿到的设计文档中会存在通信协议的说明，对于客户端来说，一个良好的通信协议需要能描述操作状态（操作码+操作提示）以操作结果，因此，常见的响应数据的格式如下： {  &amp;quot;code&amp;quot;: 0,  &amp;quot;msg&amp;quot;: &amp;quot;正常&amp;quot;,  &amp;quot;data&amp;quot;: { &amp;quot;id&amp;quot;: 1, &amp;q">
+<meta property="og:updated_time" content="2017-06-07T08:56:52.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Retrofit封装使用">
+<meta name="twitter:description" content="约定响应数据格式####### 通常来说，你拿到的设计文档中会存在通信协议的说明，对于客户端来说，一个良好的通信协议需要能描述操作状态（操作码+操作提示）以操作结果，因此，常见的响应数据的格式如下： {  &amp;quot;code&amp;quot;: 0,  &amp;quot;msg&amp;quot;: &amp;quot;正常&amp;quot;,  &amp;quot;data&amp;quot;: { &amp;quot;id&amp;quot;: 1, &amp;q">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/07/封装网络框架/"/>
+
+
+
+
+
+  <title>Retrofit封装使用 | Android进阶之路--左文站</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Android进阶之路--左文站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            GitHub集锦
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            作者简介
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            目录
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/07/封装网络框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左文站">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Android进阶之路--左文站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Retrofit封装使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-07T16:31:02+08:00">
+                2017-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/07/封装网络框架/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/07/封装网络框架/" class="leancloud_visitors" data-flag-title="Retrofit封装使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="约定响应数据格式"><a href="#约定响应数据格式" class="headerlink" title="约定响应数据格式"></a>约定响应数据格式</h5><p>####### 通常来说，你拿到的设计文档中会存在通信协议的说明，对于客户端来说，一个良好的通信协议需要能描述操作状态（操作码+操作提示）以操作结果，因此，常见的响应数据的格式如下：</p>
+<pre><code>{
+ &quot;code&quot;: 0,
+ &quot;msg&quot;: &quot;正常&quot;,
+ &quot;data&quot;: {
+&quot;id&quot;: 1,
+&quot;account&quot;: &quot;121313&quot;,
+&quot;accountName&quot;: &quot;alipay&quot;,
+&quot;income&quot;: &quot;600.000000&quot;
+}
+}
+</code></pre><a id="more"></a>
+<h3 id="响应数据映射实体数据模型"><a href="#响应数据映射实体数据模型" class="headerlink" title="响应数据映射实体数据模型"></a>响应数据映射实体数据模型</h3><p>当我们接受到如上格式的响应数据时，下面便是考虑如何应用的问题，也就是如何将协议转换？是在获取响应的时候自动转换还是手动转换？转换成Java实体类还是String？</p>
+<p>“偷懒”是程序员的天性，我们当然不希望花费时间在这种无创造性的工作上，所以我们考虑在收到响应的时候直接将其转换为java实体类。</p>
+<p>确定了我们的目标之后，接下来，首要任务是对数据协议进行抽象？什么叫做数据协议抽象？<br>所谓的数据协议抽象就是根据聚合性，通用性，隔离性三原则将整个数据协议进行切分复用，以便更好的映射成我们需要的数据模型。</p>
+<p>我们对刚才约定的数据协议格式进行协议抽象后，可以拿到类似以下的实体模型：</p>
+<pre><code>public class Result&lt;T&gt; implements Serializable{
+private int errorCode;
+private String errorMsg;
+private boolean flag;
+private T data;
+
+public int getErrorCode() {
+    return errorCode;
+}
+
+public void setErrorCode(int errorCode) {
+    this.errorCode = errorCode;
+}
+
+public String getErrorMsg() {
+    return errorMsg;
+}
+
+public void setErrorMsg(String errorMsg) {
+    this.errorMsg = errorMsg;
+}
+
+public boolean isFlag() {
+    return flag;
+}
+
+public void setFlag(boolean flag) {
+    this.flag = flag;
+}
+
+public T getData() {
+    return data;
+}
+
+public void setData(T data) {
+    this.data = data;
+}
+
+@Override
+public String toString() {
+    return &quot;Result{&quot; +
+            &quot;errorCode=&quot; + errorCode +
+            &quot;, errorMsg=&apos;&quot; + errorMsg + &apos;\&apos;&apos; +
+            &quot;, flag=&quot; + flag +
+            &quot;, data=&quot; + data +
+            &apos;}&apos;;
+}
+}
+</code></pre><h5 id="为了下面的需要我们一同将消息列表和消息详情的实体类放上来："><a href="#为了下面的需要我们一同将消息列表和消息详情的实体类放上来：" class="headerlink" title="为了下面的需要我们一同将消息列表和消息详情的实体类放上来："></a>为了下面的需要我们一同将消息列表和消息详情的实体类放上来：</h5><pre><code>public class message{
+
+private String content;
+private String createtime;
+private String id;
+private int status;
+private String title;
+private String type;
+//...set和get方法
+}
+</code></pre><h5 id="现在来看看我们理想的获取消息列表和获取消息详情的接口应该是什么样的："><a href="#现在来看看我们理想的获取消息列表和获取消息详情的接口应该是什么样的：" class="headerlink" title="现在来看看我们理想的获取消息列表和获取消息详情的接口应该是什么样的："></a>现在来看看我们理想的获取消息列表和获取消息详情的接口应该是什么样的：</h5><pre><code>public interface ApiStores {
+@FormUrlEncoded
+@POST(&quot;/login/login.do&quot;)
+Observable&lt;Result&lt;LoginData&gt;&gt; login(@FieldMap Map&lt;String, String&gt; map); 
+}
+</code></pre><h3 id="自定义Converter统一错误处理"><a href="#自定义Converter统一错误处理" class="headerlink" title="自定义Converter统一错误处理"></a>自定义Converter统一错误处理</h3><h5 id="1-预定错误类型"><a href="#1-预定错误类型" class="headerlink" title="1.预定错误类型"></a>1.预定错误类型</h5><pre><code>public class ApiErrorCode {
+
+/** 客户端错误*/
+public static   int ERROR_CLIENT_AUTHORIZED = 1;
+/** 用户授权失败*/
+public static  int ERROR_USER_AUTHORIZED = 2;
+/** 请求参数错误*/
+public static  int ERROR_REQUEST_PARAM = 3;
+/** 参数检验不通过 */
+public static  int ERROR_PARAM_CHECK = 4;
+/** 自定义错误*/
+public static  int ERROR_OTHER = 10;
+/** 无网络连接*/
+public static int ERROR_NO_INTERNET = 11;
+
+//账号异常
+public static int Logcode=10086;
+//在其他地方登录
+public static int Logcode1=10087;
+//账号不存在
+public static int Logcode2=999999;
+}
+</code></pre><h5 id="2-自定义异常类"><a href="#2-自定义异常类" class="headerlink" title="2.自定义异常类"></a>2.自定义异常类</h5><pre><code>public class ApiException extends RuntimeException {
+private int errorCode;
+private boolean flag;
+
+public ApiException(int code, String errorCode, boolean isflag) {
+    super(errorCode);
+    this.errorCode = code;
+    this.flag = isflag;
+}
+
+
+public int getErrorCode() {
+    return errorCode;
+}
+
+public boolean isFlag() {
+    return flag;
+}
+}
+</code></pre><p>怎么将异常注入呢？下面来了</p>
+<h5 id="3-自定义工厂类"><a href="#3-自定义工厂类" class="headerlink" title="3.自定义工厂类"></a>3.自定义工厂类</h5><h6 id="3-1-MyGsonConverterFactory"><a href="#3-1-MyGsonConverterFactory" class="headerlink" title="3.1 MyGsonConverterFactory"></a>3.1 MyGsonConverterFactory</h6><pre><code>public class MyGsonConverterFactory extends Converter.Factory {
+private final Gson gson;
+
+private MyGsonConverterFactory(Gson gson) {
+    if (gson == null) throw new NullPointerException(&quot;gson == null&quot;);
+    this.gson = gson;
+}
+
+public static MyGsonConverterFactory create() {
+    return create(new Gson());
+}
+
+public static MyGsonConverterFactory create(Gson gson) {
+    return new MyGsonConverterFactory(gson);
+}
+
+@Override
+public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
+    TypeAdapter&lt;?&gt; adapter = gson.getAdapter(TypeToken.get(type));
+    return new MyGsonResponseBodyConverter&lt;&gt;(gson, adapter);
+}
+
+@Override
+public Converter&lt;?, RequestBody&gt; requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
+    TypeAdapter&lt;?&gt; adapter = gson.getAdapter(TypeToken.get(type));
+    return new MyGsonRequestBodyConverter&lt;&gt;(gson, adapter);
+}
+}
+</code></pre><h6 id="3-2-MyGsonRequestBodyConverter"><a href="#3-2-MyGsonRequestBodyConverter" class="headerlink" title="3.2 MyGsonRequestBodyConverter"></a>3.2 MyGsonRequestBodyConverter</h6><pre><code>public class MyGsonRequestBodyConverter&lt;T&gt; implements Converter&lt;T, RequestBody&gt; {
+private static final MediaType MEDIA_TYPE = MediaType.parse(&quot;application/json; charset=UTF-8&quot;);
+private static final Charset UTF_8 = Charset.forName(&quot;UTF-8&quot;);
+
+private final Gson gson;
+private final TypeAdapter&lt;T&gt; adapter;
+
+public MyGsonRequestBodyConverter(Gson gson, TypeAdapter&lt;T&gt; adapter) {
+    this.gson = gson;
+    this.adapter = adapter;
+}
+
+@Override
+public RequestBody convert(T value) throws IOException {
+    Buffer buffer = new Buffer();
+    Writer writer = new OutputStreamWriter(buffer.outputStream(), UTF_8);
+    JsonWriter jsonWriter = gson.newJsonWriter(writer);
+    adapter.write(jsonWriter, value);
+    jsonWriter.close();
+    return RequestBody.create(MEDIA_TYPE, buffer.readByteString());
+}
+}
+</code></pre><h6 id="3-3-MyGsonResponseBodyConverter"><a href="#3-3-MyGsonResponseBodyConverter" class="headerlink" title="3.3 MyGsonResponseBodyConverter"></a>3.3 MyGsonResponseBodyConverter</h6><pre><code>public class MyGsonConverterFactory extends Converter.Factory {
+private final Gson gson;
+
+private MyGsonConverterFactory(Gson gson) {
+    if (gson == null) throw new NullPointerException(&quot;gson == null&quot;);
+    this.gson = gson;
+}
+
+public static MyGsonConverterFactory create() {
+    return create(new Gson());
+}
+
+public static MyGsonConverterFactory create(Gson gson) {
+    return new MyGsonConverterFactory(gson);
+}
+
+@Override
+public Converter&lt;ResponseBody, ?&gt; responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
+    TypeAdapter&lt;?&gt; adapter = gson.getAdapter(TypeToken.get(type));
+    return new MyGsonResponseBodyConverter&lt;&gt;(gson, adapter);
+}
+
+@Override
+public Converter&lt;?, RequestBody&gt; requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
+    TypeAdapter&lt;?&gt; adapter = gson.getAdapter(TypeToken.get(type));
+    return new MyGsonRequestBodyConverter&lt;&gt;(gson, adapter);
+}
+}
+</code></pre><h5 id="4-BaseSubscriber"><a href="#4-BaseSubscriber" class="headerlink" title="4 BaseSubscriber"></a>4 BaseSubscriber</h5><pre><code>public abstract class BaseSubscriber&lt;T&gt; extends Subscriber&lt;T&gt; {
+
+private Context mContext;
+
+public BaseSubscriber() {
+}
+
+public BaseSubscriber(Context context) {
+    mContext = context;
+}
+@Override
+public void onCompleted() {
+}
+
+@Override
+public void onError(Throwable e) {
+ //        ApiErrorHelper.handleCommonError(mContext, e);
+    if (e instanceof HttpException) {
+
+        HttpException httpException = (HttpException) e;
+        //httpException.response().errorBody().string()
+        int code = httpException.code();
+        String msg = httpException.getMessage();
+        LogUtil.e(&quot;code&quot;, &quot;=====&quot; + code);
+        if (code == 504) {
+            msg = &quot;网络不给力&quot;;
+        }
+        if (code == 502 || code == 404) {
+            msg = &quot;服务器异常，请稍后再试&quot;;
+        }
+
+        onError(msg);
+
+    } else if (e instanceof UnknownHostException) {
+
+        onError(&quot;网络异常&quot;);
+
+    } else if (e instanceof ApiException) {
+        //ApiException处理
+        ApiException apiException= (ApiException) e;
+        onError(apiException.getMessage());
+
+ //            if (ApiErrorCode.Logcode2==apiException.getErrorCode()){
+ //                onError(&quot;账号不存在&quot;);
+ //            }else if(ApiErrorCode.Logcode==apiException.getErrorCode()){
+ //                onError(&quot;账号出现异常&quot;);
+//            }else if(ApiErrorCode.Logcode1==apiException.getErrorCode()){
+//                onError(&quot;账号在其他地方登录&quot;);
+//            }
+
+    } else{
+        onError(e.toString());
+    }
+
+
+}
+
+@Override
+public void onNext(T t) {
+
+    if (t == null) {
+        onError(&quot;result is null&quot;);
+        return;
+    }
+    onSuccess(t);
+
+}
+
+public abstract void onSuccess(T result);
+public abstract void onError(String errmag);
+}
+</code></pre><h5 id="5-使用"><a href="#5-使用" class="headerlink" title="5.使用"></a>5.使用</h5><pre><code>public static Retrofit retrofit() {
+    if (mRetrofit == null) {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        if (BuildConfig.DEBUG) {
+            // Log信息拦截器
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            //设置 Debug Log 模式
+            builder.addInterceptor(loggingInterceptor);
+        }
+
+        OkHttpClient okHttpClient = builder.build();
+        mRetrofit = new Retrofit.Builder()
+                .baseUrl(BaseInfo.URL)
+ //                    .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(MyGsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .client(okHttpClient)
+                .build();
+    }
+    return mRetrofit;
+
+}
+
+
+                .login(params)
+                .map(new HttpResultFunc&lt;LoginData&gt;())
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ApiCallback&lt;LoginData&gt;() {
+                    @Override
+                    public void onSuccess(LoginData model) {
+
+                        mView.showFailedError(model.getSysno());
+                    }
+
+                    @Override
+                    public void onFailure(String msg) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+                });
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/31/增量更新/" rel="next" title="增量更新小结">
+                <i class="fa fa-chevron-left"></i> 增量更新小结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/07/链式调/" rel="prev" title="打造链式调用第三方网络请求">
+                打造链式调用第三方网络请求 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="左文站" />
+          <p class="site-author-name" itemprop="name">左文站</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#约定响应数据格式"><span class="nav-number">1.</span> <span class="nav-text">约定响应数据格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应数据映射实体数据模型"><span class="nav-number"></span> <span class="nav-text">响应数据映射实体数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为了下面的需要我们一同将消息列表和消息详情的实体类放上来："><span class="nav-number">1.</span> <span class="nav-text">为了下面的需要我们一同将消息列表和消息详情的实体类放上来：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#现在来看看我们理想的获取消息列表和获取消息详情的接口应该是什么样的："><span class="nav-number">2.</span> <span class="nav-text">现在来看看我们理想的获取消息列表和获取消息详情的接口应该是什么样的：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义Converter统一错误处理"><span class="nav-number"></span> <span class="nav-text">自定义Converter统一错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-预定错误类型"><span class="nav-number">1.</span> <span class="nav-text">1.预定错误类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-自定义异常类"><span class="nav-number">2.</span> <span class="nav-text">2.自定义异常类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-自定义工厂类"><span class="nav-number">3.</span> <span class="nav-text">3.自定义工厂类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-MyGsonConverterFactory"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 MyGsonConverterFactory</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-2-MyGsonRequestBodyConverter"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 MyGsonRequestBodyConverter</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-3-MyGsonResponseBodyConverter"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 MyGsonResponseBodyConverter</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-BaseSubscriber"><span class="nav-number">4.</span> <span class="nav-text">4 BaseSubscriber</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-使用"><span class="nav-number">5.</span> <span class="nav-text">5.使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">左文站</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "68b7fd0c14974964bb8bc7dbe7a34d69",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("vL8PNDBtyegKd6KMTvEeN7M5-gzGzoHsz", "kxEWPUUrnHF20Kij9gSNh82o");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
