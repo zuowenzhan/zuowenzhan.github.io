@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="1.回顾一下之前的持久化管理cookie保存本地cookie： CookieHandler cookieHandler = new CookieManager(new PersistentCookieStore(context),            CookiePolicy.ACCEPT_ALL);">
+<meta name="description" content="清楚的了解View的生命周期，才能更好的自定义view。view的生命周期包括：创建对象，测量，布局，绘制，事件处理、死亡。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Retrofit去设置OKHttp">
-<meta property="og:url" content="http://yoursite.com/2017/05/04/Retrofit设置OKHttp/index.html">
+<meta property="og:title" content="剖析view生命周期">
+<meta property="og:url" content="http://yoursite.com/2017/06/21/view生命周期/index.html">
 <meta property="og:site_name" content="Android进阶之路--左文站">
-<meta property="og:description" content="1.回顾一下之前的持久化管理cookie保存本地cookie： CookieHandler cookieHandler = new CookieManager(new PersistentCookieStore(context),            CookiePolicy.ACCEPT_ALL);">
-<meta property="og:image" content="http://yoursite.com/img/4.jpg">
-<meta property="og:updated_time" content="2017-05-10T05:42:19.045Z">
+<meta property="og:description" content="清楚的了解View的生命周期，才能更好的自定义view。view的生命周期包括：创建对象，测量，布局，绘制，事件处理、死亡。">
+<meta property="og:image" content="http://yoursite.com/img/image.jpg">
+<meta property="og:updated_time" content="2017-06-21T08:03:17.008Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Retrofit去设置OKHttp">
-<meta name="twitter:description" content="1.回顾一下之前的持久化管理cookie保存本地cookie： CookieHandler cookieHandler = new CookieManager(new PersistentCookieStore(context),            CookiePolicy.ACCEPT_ALL);">
-<meta name="twitter:image" content="http://yoursite.com/img/4.jpg">
+<meta name="twitter:title" content="剖析view生命周期">
+<meta name="twitter:description" content="清楚的了解View的生命周期，才能更好的自定义view。view的生命周期包括：创建对象，测量，布局，绘制，事件处理、死亡。">
+<meta name="twitter:image" content="http://yoursite.com/img/image.jpg">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/04/Retrofit设置OKHttp/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/21/view生命周期/"/>
 
 
 
 
 
-  <title>使用Retrofit去设置OKHttp | Android进阶之路--左文站</title>
+  <title>剖析view生命周期 | Android进阶之路--左文站</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +274,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/Retrofit设置OKHttp/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/21/view生命周期/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="左文站">
@@ -291,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用Retrofit去设置OKHttp</h1>
+          <h1 class="post-title" itemprop="name headline">剖析view生命周期</h1>
         
 
         <div class="post-meta">
@@ -303,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-04T18:41:41+08:00">
-                2017-05-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-21T15:34:42+08:00">
+                2017-06-21
               </time>
             
 
@@ -322,7 +322,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/05/04/Retrofit设置OKHttp/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/06/21/view生命周期/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -331,7 +331,7 @@
 
           
           
-             <span id="/2017/05/04/Retrofit设置OKHttp/" class="leancloud_visitors" data-flag-title="使用Retrofit去设置OKHttp">
+             <span id="/2017/06/21/view生命周期/" class="leancloud_visitors" data-flag-title="剖析view生命周期">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -359,132 +359,29 @@
       
 
       
-        <p><img src="/img/4.jpg" alt="开心一刻"></p>
-<h3 id="1-回顾一下之前的持久化管理cookie"><a href="#1-回顾一下之前的持久化管理cookie" class="headerlink" title="1.回顾一下之前的持久化管理cookie"></a>1.回顾一下之前的持久化管理cookie</h3><p>保存本地cookie：</p>
-<pre><code>CookieHandler cookieHandler = new CookieManager(new PersistentCookieStore(context),
-           CookiePolicy.ACCEPT_ALL);
-</code></pre><a id="more"></a>
-<p>添加cookieJar：</p>
-<pre><code>.cookieJar(new JavaNetCookieJar(cookieHandler))
-</code></pre><h3 id="2-设置网络超时："><a href="#2-设置网络超时：" class="headerlink" title="2.设置网络超时："></a>2.设置网络超时：</h3><p>读、写、连接：</p>
-<pre><code>.readTimeout(10000, TimeUnit.MILLISECONDS)
-.connectTimeout(10000,TimeUnit.MILLISECONDS)
-.writeTimeout(1000,TimeUnit.MILLISECONDS)
-</code></pre><h3 id="3-设置HttpLoggingInterceptor拦截器："><a href="#3-设置HttpLoggingInterceptor拦截器：" class="headerlink" title="3.设置HttpLoggingInterceptor拦截器："></a>3.设置HttpLoggingInterceptor拦截器：</h3><p>我们可以设置拦截器来打印网络请求的返回结果：</p>
-<pre><code>HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-    logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-</code></pre><p>其中Interceptors的level是可以自行设置的：<br>注释写的很清楚了</p>
-<pre><code>public enum Level {
-/** No logs. */
-NONE,
-/**
- * Logs request and response lines.
- *
- * &lt;p&gt;Example:
- * &lt;pre&gt;{@code
- * --&gt; POST /greeting http/1.1 (3-byte body)
- *
- * &lt;-- 200 OK (22ms, 6-byte body)
- * }&lt;/pre&gt;
- */
-BASIC,
-/**
- * Logs request and response lines and their respective headers.
- *
- * &lt;p&gt;Example:
- * &lt;pre&gt;{@code
- * --&gt; POST /greeting http/1.1
- * Host: example.com
- * Content-Type: plain/text
- * Content-Length: 3
- * --&gt; END POST
- *
- * &lt;-- 200 OK (22ms)
- * Content-Type: plain/text
- * Content-Length: 6
- * &lt;-- END HTTP
- * }&lt;/pre&gt;
- */
-  HEADERS,
-  /**
-     * Logs request and response lines and their respective headers and bodies (if present).
-    *
-    * &lt;p&gt;Example:
- * &lt;pre&gt;{@code
- * --&gt; POST /greeting http/1.1
- * Host: example.com
- * Content-Type: plain/text
- * Content-Length: 3
- *
- * Hi?
- * --&gt; END GET
- *
- * &lt;-- 200 OK (22ms)
- * Content-Type: plain/text
- * Content-Length: 6
- *
- * Hello!
- * &lt;-- END HTTP
-   * }&lt;/pre&gt;
- */
-  BODY
- }
-</code></pre><h3 id="4-设置缓存："><a href="#4-设置缓存：" class="headerlink" title="4.设置缓存："></a>4.设置缓存：</h3><p>开启OKHttp缓存： </p>
-<pre><code>File httpCacheDirectory = new File(UIUtils.getContext().getExternalCacheDir(), &quot;xxx&quot;); 
-client.setCache(new Cache(httpCacheDirectory,10 * 1024 * 1024));
-</code></pre><p>先获取系统外部存储的路径，”xxx”可以自己命名，文件夹可以在 Android/data/&lt;包名&gt;/cache/resposes 看到里面的内容。</p>
-<p>设置拦截器（缓存）拦截Request：</p>
-<pre><code>Request request = chain.request();
-           if (！AppUtil.isNetworkReachable(UIUtils.getContext())) {
-               request = request.newBuilder()
-                       .cacheControl(CacheControl.FORCE_CACHE)
-                       .url(path).build();
-               UIUtils.showToastSafe(&quot;暂无网络&quot;);
-           }
-</code></pre><p>设置Response：</p>
-<pre><code>Response response = chain.proceed(request);
-if(AppUtil.isNetworkReachable(UIUtils.getContext()))
+        <p>清楚的了解View的生命周期，才能更好的自定义view。view的生命周期包括：创建对象，测量，布局，绘制，事件处理、死亡。<br><a id="more"></a></p>
+<h1 id="1-创建对象"><a href="#1-创建对象" class="headerlink" title="1.创建对象"></a>1.创建对象</h1><h3 id="1-1创建方式-2种"><a href="#1-1创建方式-2种" class="headerlink" title="1.1创建方式(2种)"></a>1.1创建方式(2种)</h3><h6 id="1-1-1-new-MyView-context"><a href="#1-1-1-new-MyView-context" class="headerlink" title="1.1.1 new MyView(context)"></a>1.1.1 new MyView(context)</h6><h6 id="1-1-2-加载布局文件（自定义View必须使用全类名标签）"><a href="#1-1-2-加载布局文件（自定义View必须使用全类名标签）" class="headerlink" title="1.1.2 加载布局文件（自定义View必须使用全类名标签）"></a>1.1.2 加载布局文件（自定义View必须使用全类名标签）</h6><h3 id="1-2流程方法"><a href="#1-2流程方法" class="headerlink" title="1.2流程方法"></a>1.2流程方法</h3><h6 id="1-1-1-构造器"><a href="#1-1-1-构造器" class="headerlink" title="1.1.1 构造器"></a>1.1.1 构造器</h6><h6 id="1-1-2-onFinishInflate-只有布局的方式才会调用"><a href="#1-1-2-onFinishInflate-只有布局的方式才会调用" class="headerlink" title="1.1.2 onFinishInflate() 只有布局的方式才会调用"></a>1.1.2 onFinishInflate() 只有布局的方式才会调用</h6><p>重写的目的: 得到子View，getChildAt(int index):index按照加载顺序排列</p>
+<h6 id="1-1-2-onAttachedToWindow"><a href="#1-1-2-onAttachedToWindow" class="headerlink" title="1.1.2 onAttachedToWindow()"></a>1.1.2 onAttachedToWindow()</h6><p>重写的目的: 得到子View</p>
+<p>####### Activity的onResume()执行之后才会进入后面的流程</p>
+<h1 id="2-测量：计算并确定视图的大小-width-height"><a href="#2-测量：计算并确定视图的大小-width-height" class="headerlink" title="2.测量：计算并确定视图的大小(width/height)"></a>2.测量：计算并确定视图的大小(width/height)</h1><h3 id="2-1-measure-方法"><a href="#2-1-measure-方法" class="headerlink" title="2.1 measure()方法"></a>2.1 measure()方法</h3><p>系统在此方法中测量计算出当前视图的宽高，此方法不能重写</p>
+<h3 id="2-2-onMeasure-方法"><a href="#2-2-onMeasure-方法" class="headerlink" title="2.2 onMeasure()方法"></a>2.2 onMeasure()方法</h3><p>当mearure()中计算出的视图的宽高就会调用此方法, 在此方法默认保存的视图测量的宽高</p>
+<p>注意：视图测量的宽高不等同于视图的宽高。获取的时机不同</p>
+<p>重写的意义：得到当前视图/子视图测量的宽高;保存我们自己指定的宽高</p>
+<h1 id="3-布局：确定视图显示的坐标-left-top-right-bottom"><a href="#3-布局：确定视图显示的坐标-left-top-right-bottom" class="headerlink" title="3.布局：确定视图显示的坐标(left, top, right, bottom)"></a>3.布局：确定视图显示的坐标(left, top, right, bottom)</h1><h3 id="3-1-layout-l-t-r-b-方法"><a href="#3-1-layout-l-t-r-b-方法" class="headerlink" title="3.1 layout(l, t, r, b)方法"></a>3.1 layout(l, t, r, b)方法</h3><p>不会重写此方法, 只会调用视图对象的此方法, 指定其新的显示位置</p>
+<h3 id="3-2-onLayout-方法"><a href="#3-2-onLayout-方法" class="headerlink" title="3.2 onLayout()方法"></a>3.2 onLayout()方法</h3><p>在layout()的过程中, 如果①视图的位置change或②强制重新布局就会调用此方法</p>
+<p>重写它: 可以对子View进行重新布局</p>
+<p>调用childView.layout(left, top, right, bottom)</p>
+<h3 id="view-requestLayout-强制重新布局"><a href="#view-requestLayout-强制重新布局" class="headerlink" title="view.requestLayout()  强制重新布局"></a>view.requestLayout()  强制重新布局</h3><h1 id="4-绘制"><a href="#4-绘制" class="headerlink" title="4.绘制"></a>4.绘制</h1><h3 id="4-1-draw-方法"><a href="#4-1-draw-方法" class="headerlink" title="4.1 draw()方法"></a>4.1 draw()方法</h3><p>绘制视图通用的部分</p>
+<p>确定绘制的流程</p>
+<p>一般不会重写此方法</p>
+<h3 id="4-2-onDraw-方法"><a href="#4-2-onDraw-方法" class="headerlink" title="4.2 onDraw()方法"></a>4.2 onDraw()方法</h3><p>重写此方法,绘制自己需要的样子</p>
+<p>一些具体的View类(TextView/ImageView)都重写了此方法</p>
+<h3 id="4-3-强制重绘"><a href="#4-3-强制重绘" class="headerlink" title="4.3 强制重绘"></a>4.3 强制重绘</h3><p>invalidate() ：只能在主线程执行</p>
+<p>postInvalidate() ：可以在主线程或分线程执行</p>
+<h1 id="5-事件处理"><a href="#5-事件处理" class="headerlink" title="5.事件处理"></a>5.事件处理</h1><p><img src="/img/image.jpg" alt="开心一刻"></p>
+<h1 id="6-死亡"><a href="#6-死亡" class="headerlink" title="6.死亡"></a>6.死亡</h1><p>Activity死亡之前，视图对象被移除。</p>
+<p>onDetachedFromWindow()；方法</p>
 
-{
-    int maxAge = 60 * 60; // read from cache for 60 minute
-    response.newBuilder()
-            .removeHeader(&quot;Pragma&quot;)
-            .header(&quot;Cache-Control&quot;, &quot;public, max-age=&quot; + maxAge)
-            .build();
-}
-
-else
-
-{
-    int maxStale = 60 * 60 * 24 * 7; // tolerate 4-weeks stale
-    response.newBuilder()
-            .removeHeader(&quot;Pragma&quot;)
-            .header(&quot;Cache-Control&quot;, &quot;public, only-if-cached, max-stale=&quot; + maxStale)
-            .build();
-}
-</code></pre><p>先判断网络，网络好的时候，移除header后添加haunch失效时间为1小时，网络未连接的情况下设置缓存时间为7天。</p>
-<h2 id="设置通用Header"><a href="#设置通用Header" class="headerlink" title="设置通用Header"></a>设置通用Header</h2><p>Retrofit 2.0支持在每个方法的上面添加注解设置头</p>
-<pre><code>@Headers(&quot;Content-Type: application/json&quot;)
-</code></pre><p>很显然这样比较麻烦，那么你可以这样：</p>
-<p>通过拦截器来设置头</p>
-<pre><code>OkHttpClient httpClient = new OkHttpClient.Builder()  
-           .addInterceptor(new Interceptor() {  
-               @Override  
-               public Response intercept(Chain chain) throws IOException {  
-                   Request request = chain.request()  
-                           .newBuilder()  
-                           .addHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded; charset=UTF-8&quot;)  
-                           .addHeader(&quot;Accept-Encoding&quot;, &quot;gzip, deflate&quot;)  
-                           .addHeader(&quot;Connection&quot;, &quot;keep-alive&quot;)  
-                           .addHeader(&quot;Accept&quot;, &quot;*/*&quot;)  
-                           .addHeader(&quot;Cookie&quot;, &quot;add cookies here&quot;)  
-                           .build();  
-                   return chain.proceed(request);  
-               }  
-
-           })  
-           .build(); 
-</code></pre>
       
     </div>
 
@@ -520,8 +417,8 @@ else
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/04/持久化Cookie/" rel="next" title="Retrofit+OKHttp 教你怎么持久化管理Cookie">
-                <i class="fa fa-chevron-left"></i> Retrofit+OKHttp 教你怎么持久化管理Cookie
+              <a href="/2017/06/07/链式调/" rel="next" title="打造链式调用第三方网络请求">
+                <i class="fa fa-chevron-left"></i> 打造链式调用第三方网络请求
               </a>
             
           </div>
@@ -529,10 +426,6 @@ else
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/05/Retrofit合理封装/" rel="prev" title="Retrofit--合理封装回调">
-                Retrofit--合理封装回调 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -645,7 +538,7 @@ else
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-回顾一下之前的持久化管理cookie"><span class="nav-number">1.</span> <span class="nav-text">1.回顾一下之前的持久化管理cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-设置网络超时："><span class="nav-number">2.</span> <span class="nav-text">2.设置网络超时：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-设置HttpLoggingInterceptor拦截器："><span class="nav-number">3.</span> <span class="nav-text">3.设置HttpLoggingInterceptor拦截器：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-设置缓存："><span class="nav-number">4.</span> <span class="nav-text">4.设置缓存：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置通用Header"><span class="nav-number"></span> <span class="nav-text">设置通用Header</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-创建对象"><span class="nav-number">1.</span> <span class="nav-text">1.创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1创建方式-2种"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1创建方式(2种)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-1-1-new-MyView-context"><span class="nav-number">1.0.1.0.0.1.</span> <span class="nav-text">1.1.1 new MyView(context)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-1-2-加载布局文件（自定义View必须使用全类名标签）"><span class="nav-number">1.0.1.0.0.2.</span> <span class="nav-text">1.1.2 加载布局文件（自定义View必须使用全类名标签）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2流程方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2流程方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-1-1-构造器"><span class="nav-number">1.0.2.0.0.1.</span> <span class="nav-text">1.1.1 构造器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-1-2-onFinishInflate-只有布局的方式才会调用"><span class="nav-number">1.0.2.0.0.2.</span> <span class="nav-text">1.1.2 onFinishInflate() 只有布局的方式才会调用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-1-2-onAttachedToWindow"><span class="nav-number">1.0.2.0.0.3.</span> <span class="nav-text">1.1.2 onAttachedToWindow()</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-测量：计算并确定视图的大小-width-height"><span class="nav-number">2.</span> <span class="nav-text">2.测量：计算并确定视图的大小(width/height)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-measure-方法"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1 measure()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-onMeasure-方法"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.2 onMeasure()方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-布局：确定视图显示的坐标-left-top-right-bottom"><span class="nav-number">3.</span> <span class="nav-text">3.布局：确定视图显示的坐标(left, top, right, bottom)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-layout-l-t-r-b-方法"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 layout(l, t, r, b)方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-onLayout-方法"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2 onLayout()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#view-requestLayout-强制重新布局"><span class="nav-number">3.0.3.</span> <span class="nav-text">view.requestLayout()  强制重新布局</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-绘制"><span class="nav-number">4.</span> <span class="nav-text">4.绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-draw-方法"><span class="nav-number">4.0.1.</span> <span class="nav-text">4.1 draw()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-onDraw-方法"><span class="nav-number">4.0.2.</span> <span class="nav-text">4.2 onDraw()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-强制重绘"><span class="nav-number">4.0.3.</span> <span class="nav-text">4.3 强制重绘</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-事件处理"><span class="nav-number">5.</span> <span class="nav-text">5.事件处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-死亡"><span class="nav-number">6.</span> <span class="nav-text">6.死亡</span></a></li></ol></div>
             
 
           </div>
